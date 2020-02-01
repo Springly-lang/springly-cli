@@ -21,6 +21,10 @@ namespace TestScriptRunner
         {
             var script = file.Content;
             var tokens = new List<Token>();
+            if (string.IsNullOrWhiteSpace(script))
+            {
+                return Enumerable.Empty<Token>();
+            }
 
             var commands = script.Split('\n', StringSplitOptions.None)
                             .Select(command => command.Trim())

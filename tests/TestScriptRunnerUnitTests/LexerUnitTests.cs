@@ -5,16 +5,44 @@ using Xunit;
 
 namespace TestScriptRunnerUnitTests
 {
-    public class TokenizerTests
+    public class LexerUnitTests
     {
+        const string SampleScriptFile = "C:\\sample.testcase";
+
         [Fact]
-        public void Parse_ForUseCommand_ReturnsExpectedTokens()
+        public void Tokenize_ForEmptyScript_ReturnsZeroToken()
+        {
+            var emptyFile = new TestCaseSourceFile(SampleScriptFile, " \t \n ");
+            var tokens = Lexer.Tokenize(emptyFile);
+            Assert.Empty(tokens);
+        }
+
+        [Theory]
+        [InlineData(TokenType.Comment, "", "\\\\ here is a normal comment that ends with new line.\n", 0)]
+        [InlineData(TokenType.Colon, "", "\"item 1\", \"item 2\"\n", 1)]
+        [InlineData(TokenType.StringValue, "\\\\this should be a string not a comment", "\"\\\\this should be a string not a comment\"\n", 0)]
+        public void Tokenize_ForGivenTokenType_ReturnsExpectedTokens(TokenType expectedTokenType, string expectedValue, string script, int index)
         {
             // Arrange
-            var script = "use \"tour-platform.json\"";
+            var sourceFile = new TestCaseSourceFile(SampleScriptFile, script);
 
             // Act
-            var tokens = Lexer.Tokenize(script);
+            var tokens = Lexer.Tokenize(sourceFile);
+
+            // Assert
+            var actualToken = tokens.ElementAt(index);
+            Assert.Equal(expectedTokenType, actualToken.TokenType);
+            Assert.Equal(expectedValue, actualToken.Value);
+        }
+
+        [Fact]
+        public void Tokenize_ForUseCommand_ReturnsExpectedTokens()
+        {
+            // Arrange
+            var scriptFile = new TestCaseSourceFile(SampleScriptFile, "use \"tour-platform.json\"");
+
+            // Act
+            var tokens = Lexer.Tokenize(scriptFile);
 
             // Assert
             Assert.Equal(3, tokens.Count());
@@ -29,13 +57,13 @@ namespace TestScriptRunnerUnitTests
         }
 
         [Fact]
-        public void Parse_ForCheckWithColonCommand_ReturnsExpectedTokens()
+        public void Tokenize_ForCheckWithColonCommand_ReturnsExpectedTokens()
         {
             // Arrange
-            var script = "check \"luxary tours\", \"last second\" from \"tour-types\"";
+            var scriptFile = new TestCaseSourceFile(SampleScriptFile, "check \"luxary tours\", \"last second\" from \"tour-types\"");
 
             // Act
-            var tokens = Lexer.Tokenize(script);
+            var tokens = Lexer.Tokenize(scriptFile);
 
             // Assert
             Assert.Equal(10, tokens.Count());
@@ -72,10 +100,10 @@ namespace TestScriptRunnerUnitTests
         }
 
         [Fact]
-        public void Parse_ForValidScriptWithNewLineAtEnd_ReturnsExpectedTokens()
+        public void Tokenize_ForValidScriptWithNewLineAtEnd_ReturnsExpectedTokens()
         {
             // Arrange
-            var script = "use \"tour-platform.json\"\r\n";
+            var script = new TestCaseSourceFile(SampleScriptFile, "use \"tour-platform.json\"\r\n");
 
             // Act
             var tokens = Lexer.Tokenize(script);

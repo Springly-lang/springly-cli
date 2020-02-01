@@ -2,11 +2,14 @@
 {
     public enum TokenType
     {
+        [TokenDefinition("^\\\\.+\n")]
+        Comment = 1,
+
         [TokenDefinition("^,")]
         Colon,
 
         [TokenDefinition("^(\"(?<value>[^\"]+)\"|'(?<value>[^']+)')")]
-        StringValue = 1,
+        StringValue,
 
         [TokenDefinition("^(?<value>\\d+[^\\w+])")]
         NumericValue,
