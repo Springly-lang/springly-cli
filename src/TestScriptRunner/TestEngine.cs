@@ -3,9 +3,22 @@ using TestScriptRunner.Commands;
 
 namespace TestScriptRunner
 {
-    public class TestEngine
+    public class TestEngine : ITestEngine
     {
-        public static ExecutionResult Execute(TestCaseSourceFile[] files)
+        public TestEngine(ILexer lexer, IParser parser, IEvaluator evaluator, ICommandFactory commandFactory)
+        {
+            Lexer = lexer;
+            Parser = parser;
+            Evaluator = evaluator;
+            CommandFactory = commandFactory;
+        }
+
+        public ILexer Lexer { get; }
+        public IParser Parser { get; }
+        public IEvaluator Evaluator { get; }
+        public ICommandFactory CommandFactory { get; }
+
+        public ExecutionResult Execute(TestCaseSourceFile[] files)
         {
             foreach (var scriptFile in files)
             {

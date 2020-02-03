@@ -1,4 +1,3 @@
-using System;
 using System.Linq;
 using TestScriptRunner;
 using Xunit;
@@ -13,7 +12,7 @@ namespace TestScriptRunnerUnitTests
         public void Tokenize_ForEmptyScript_ReturnsZeroToken()
         {
             var emptyFile = new TestCaseSourceFile(SampleScriptFile, " \t \n ");
-            var tokens = Lexer.Tokenize(emptyFile);
+            var tokens = new Lexer().Tokenize(emptyFile);
             Assert.Empty(tokens);
         }
 
@@ -21,7 +20,7 @@ namespace TestScriptRunnerUnitTests
         public void Tokenize_ElementIdentifier_ReturnsExpectedTokens()
         {
             var sampleFile = new TestCaseSourceFile(SampleScriptFile, "@google-home-page");
-            var tokens = Lexer.Tokenize(sampleFile);
+            var tokens = new Lexer().Tokenize(sampleFile);
             Assert.NotEmpty(tokens);
             Assert.Equal(TokenType.ElementIdentifier, tokens.ElementAt(0).TokenType);
             Assert.Equal("google-home-page", tokens.ElementAt(0).Value);
@@ -37,7 +36,7 @@ namespace TestScriptRunnerUnitTests
             var sourceFile = new TestCaseSourceFile(SampleScriptFile, script);
 
             // Act
-            var tokens = Lexer.Tokenize(sourceFile);
+            var tokens = new Lexer().Tokenize(sourceFile);
 
             // Assert
             var actualToken = tokens.ElementAt(index);
@@ -52,7 +51,7 @@ namespace TestScriptRunnerUnitTests
             var scriptFile = new TestCaseSourceFile(SampleScriptFile, "use \"tour-platform.json\"");
 
             // Act
-            var tokens = Lexer.Tokenize(scriptFile);
+            var tokens = new Lexer().Tokenize(scriptFile);
 
             // Assert
             Assert.Equal(2, tokens.Count());
@@ -70,7 +69,7 @@ namespace TestScriptRunnerUnitTests
             var scriptFile = new TestCaseSourceFile(SampleScriptFile, "check @luxary-tours, @last-second from @tour-types");
 
             // Act
-            var tokens = Lexer.Tokenize(scriptFile);
+            var tokens = new Lexer().Tokenize(scriptFile);
 
             // Assert
             Assert.Equal(6, tokens.Count());
@@ -101,7 +100,7 @@ namespace TestScriptRunnerUnitTests
             var script = new TestCaseSourceFile(SampleScriptFile, "use \"tour-platform.json\"\r\n");
 
             // Act
-            var tokens = Lexer.Tokenize(script);
+            var tokens = new Lexer().Tokenize(script);
 
             // Assert
             Assert.Equal(3, tokens.Count());

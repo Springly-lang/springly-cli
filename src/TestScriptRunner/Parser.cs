@@ -3,9 +3,9 @@ using System.Linq;
 
 namespace TestScriptRunner
 {
-    public class Parser
+    public class Parser : IParser
     {
-        public static IEnumerable<Statement> Parse(TestCaseSourceFile file, IEnumerable<Token> tokens)
+        public IEnumerable<Statement> Parse(TestCaseSourceFile file, IEnumerable<Token> tokens)
         {
             return tokens.GroupBy(x => x.Line).Select(x => new Statement(file, x));
         }

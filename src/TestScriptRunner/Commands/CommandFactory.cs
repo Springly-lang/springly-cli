@@ -1,10 +1,18 @@
 ﻿using System.Linq;
+using TestScriptRunner.UseDefinitions;
 
 namespace TestScriptRunner.Commands
 {
-    public class CommandFactory
+    public class CommandFactory : ICommandFactory
     {
-        public static CommandBase Create(Statement statement)
+        public CommandFactory(ITestCaseUseDefinitionFactory testCaseUseDefinitionFactory)
+        {
+            TestCaseUseDefinitionFactory = testCaseUseDefinitionFactory;
+        }
+
+        public ITestCaseUseDefinitionFactory TestCaseUseDefinitionFactory { get; }
+
+        public CommandBase Create(Statement statement)
         {
             var leadingToken = statement.Tokens.FirstOrDefault();
             switch (leadingToken.TokenType)
@@ -49,7 +57,7 @@ namespace TestScriptRunner.Commands
                     return new ScrollToCommand(statement);
 
                 case TokenType.Use:
-                    return new UseCommand(statement);
+                    return new UseCommand(statement, TestCaseUseDefinitionFactory);
 
                 case TokenType.TestCase:
                     return new TestCaseDefinitionCommand(statement);

@@ -6,7 +6,7 @@ using System.Text.RegularExpressions;
 
 namespace TestScriptRunner
 {
-    public class Lexer
+    public class Lexer : ILexer
     {
         private static string GetTokenTypePattern(TokenType tokenType)
         {
@@ -17,7 +17,7 @@ namespace TestScriptRunner
             return enumAttr?.Pattern;
         }
 
-        public static IEnumerable<Token> Tokenize(TestCaseSourceFile file)
+        public IEnumerable<Token> Tokenize(TestCaseSourceFile file)
         {
             var script = file.Content;
             var tokens = new List<Token>();

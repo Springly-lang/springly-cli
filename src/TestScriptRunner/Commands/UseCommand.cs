@@ -1,15 +1,17 @@
-﻿using Newtonsoft.Json;
-using System;
+﻿using System;
 using System.IO;
-using System.Linq;
+using TestScriptRunner.UseDefinitions;
 
 namespace TestScriptRunner.Commands
 {
     public class UseCommand : CommandBase
     {
-        public UseCommand(Statement statement) : base(statement)
+        public UseCommand(Statement statement, ITestCaseUseDefinitionFactory testCaseUseDefinitionFactory) : base(statement)
         {
+            TestCaseUseDefinitionFactory = testCaseUseDefinitionFactory;
         }
+
+        public ITestCaseUseDefinitionFactory TestCaseUseDefinitionFactory { get; }
 
         public override CommandExecutionResult Execute(CommandExecutionContext context)
         {

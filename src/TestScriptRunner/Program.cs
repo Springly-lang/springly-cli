@@ -2,6 +2,8 @@
 using System.IO;
 using System.Linq;
 using System.Runtime.CompilerServices;
+using TestScriptRunner.Commands;
+using TestScriptRunner.UseDefinitions;
 
 namespace TestScriptRunner
 {
@@ -10,6 +12,20 @@ namespace TestScriptRunner
         const int FileNotFoundErrorCode = 0x2;
         const int InvalidDataErrorCode = 0xC;
 
+        public ITestEngine Engine { get; }
+
+        public Program(ITestEngine engine)
+        {
+            Engine = engine;
+        }
+
+        public void Run(TestCaseSourceFile[] sourceFiles)
+        {
+            var result = Engine.Execute(sourceFiles);
+            Info(result.ToString());
+        }
+
+        #region Static Members
         static void Main(string[] args)
         {
             Info("Welcome to Springly test script runner v1.0");
@@ -35,9 +51,12 @@ namespace TestScriptRunner
             try
             {
                 Info("Test script execution started...");
-                var result = TestEngine.Execute(testCaseFiles);
+                var lexer = new Lexer();
+                var parser = new Parser();
+                var evaluator = new Evaluator();
+                var commandFactory = new CommandFactory(new TestCaseUseDefinitionFactory());
 
-                Info(result.ToString());
+                new Program(new TestEngine(lexer, parser, evaluator, commandFactory)).Run(testCaseFiles);
             }
             catch (SyntaxErrorException se)
             {
@@ -67,18 +86,6 @@ namespace TestScriptRunner
         {
             Print(message, ConsoleColor.White);
         }
-    }
-
-    public class TestCaseSourceFile
-    {
-        public TestCaseSourceFile(string fileName, string content)
-        {
-            FileName = fileName;
-            Content = content;
-        }
-
-        public string FileName { get; }
-
-        public string Content { get; }
+        #endregion
     }
 }

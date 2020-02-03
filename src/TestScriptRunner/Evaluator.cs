@@ -1,12 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using TestScriptRunner.Commands;
 
 namespace TestScriptRunner
 {
-    public class Evaluator
+    public class Evaluator : IEvaluator
     {
-        public static EvaluationResult Eval(TestCaseSourceFile sourceFile, IEnumerable<CommandBase> commands)
+        public EvaluationResult Eval(TestCaseSourceFile sourceFile, IEnumerable<CommandBase> commands)
         {
             var context = new CommandExecutionContext();
             context.SourceFile = sourceFile;
