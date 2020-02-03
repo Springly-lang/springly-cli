@@ -55,7 +55,7 @@ namespace TestScriptRunner.Commands
 
             context.Definitions = TestCaseUseDefinitionFactory.Create(content);
 
-            return CommandExecutionResult.Empty;
+            return CommandExecutionResult.SuccessCommand;
         }
     }
 }

@@ -5,9 +5,16 @@ namespace TestScriptRunner
 {
     public class Evaluator : IEvaluator
     {
+        public Evaluator(ILogger logger)
+        {
+            Logger = logger;
+        }
+
+        public ILogger Logger { get; }
+
         public EvaluationResult Eval(TestCaseSourceFile sourceFile, IEnumerable<CommandBase> commands)
         {
-            var context = new CommandExecutionContext();
+            var context = new CommandExecutionContext(Logger);
             context.SourceFile = sourceFile;
 
             foreach (var command in commands)

@@ -22,7 +22,7 @@
 
             context.TestCaseTitle = enumerator.Current.Value.Trim();
 
-            return CommandExecutionResult.Empty;
+            return CommandExecutionResult.SuccessCommand;
         }
     }
 }

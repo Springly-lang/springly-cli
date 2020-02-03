@@ -13,7 +13,7 @@
             public override CommandExecutionResult Execute(CommandExecutionContext context)
             {
                 // No Ops
-                return CommandExecutionResult.Empty;
+                return CommandExecutionResult.SuccessCommand;
             }
         }
 
@@ -27,12 +27,22 @@
 
         public virtual CommandExecutionResult Execute(CommandExecutionContext context)
         {
-            return CommandExecutionResult.Empty;
+            return CommandExecutionResult.SuccessCommand;
         }
     }
 
     public class CommandExecutionResult
     {
-        public static readonly CommandExecutionResult Empty = new CommandExecutionResult();
+        public static readonly CommandExecutionResult SuccessCommand = new CommandExecutionResult(true, null);
+
+        public CommandExecutionResult(bool success, string[] errorMessages)
+        {
+            Success = success;
+            ErrorMessages = errorMessages;
+        }
+
+        public string[] ErrorMessages { get; }
+
+        public bool Success { get; }
     }
 }

@@ -18,7 +18,7 @@ namespace TestScriptRunner
         public IEvaluator Evaluator { get; }
         public ICommandFactory CommandFactory { get; }
 
-        public ExecutionResult Execute(TestCaseSourceFile[] files)
+        public void Execute(TestCaseSourceFile[] files)
         {
             foreach (var scriptFile in files)
             {
@@ -38,13 +38,6 @@ namespace TestScriptRunner
 
                 Evaluator.Eval(scriptFile, commandList);
             }
-
-            return new ExecutionResult();
         }
-    }
-
-    public class ExecutionResult
-    {
-
     }
 }

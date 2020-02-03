@@ -2,6 +2,6 @@
 {
     public interface ITestEngine
     {
-        ExecutionResult Execute(TestCaseSourceFile[] files);
+        void Execute(TestCaseSourceFile[] files);
     }
 }
