@@ -1,4 +1,7 @@
-﻿namespace TestScriptRunner
+﻿using System.Collections.Generic;
+using TestScriptRunner.Commands;
+
+namespace TestScriptRunner
 {
     public class TestEngine
     {
@@ -8,9 +11,19 @@
             {
                 var tokens = Lexer.Tokenize(scriptFile);
 
-                var statements = LLParser.Parse(scriptFile, tokens);
+                var statements = Parser.Parse(scriptFile, tokens);
 
-                Evaluator.Eval(statements);
+                var commandList = new List<CommandBase>();
+                foreach (var statement in statements)
+                {
+                    var command = CommandFactory.Create(statement);
+                    if (command != CommandBase.NoOp)
+                    {
+                        commandList.Add(command);
+                    }
+                }
+
+                Evaluator.Eval(commandList);
             }
 
             return new ExecutionResult();

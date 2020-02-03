@@ -3,7 +3,7 @@ using System.Linq;
 
 namespace TestScriptRunner
 {
-    public class LLParser
+    public class Parser
     {
         public static IEnumerable<Statement> Parse(TestCaseSourceFile file, IEnumerable<Token> tokens)
         {

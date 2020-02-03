@@ -1,6 +1,6 @@
 ﻿using System.Linq;
 
-namespace TestScriptRunner
+namespace TestScriptRunner.Commands
 {
     public class CommandFactory
     {
@@ -48,58 +48,19 @@ namespace TestScriptRunner
                 case TokenType.ScrollTo:
                     return new ScrollToCommand(statement);
 
+                case TokenType.Use:
+                    return new UseCommand(statement);
+
+                case TokenType.TestCase:
+                    return new TestCaseDefinitionCommand(statement);
+
+                case TokenType.WhiteSpace:
+                case TokenType.NewLine:
+                    return CommandBase.NoOp;
+
                 default:
                     throw new SyntaxErrorException(leadingToken.Column, leadingToken.Line, "", "");
             }
-        }
-    }
-
-    public class ScrollToCommand : CommandBase
-    {
-        public ScrollToCommand(Statement statement) : base(statement)
-        {
-        }
-    }
-
-    public class SelectCommand : CommandBase
-    {
-        public SelectCommand(Statement statement) : base(statement)
-        {
-        }
-    }
-
-    public class TypeCommand : CommandBase
-    {
-        public TypeCommand(Statement statement) : base(statement)
-        {
-        }
-    }
-
-    public class WaitCommand : CommandBase
-    {
-        public WaitCommand(Statement statement) : base(statement)
-        {
-        }
-    }
-
-    public class NavigationCommand : CommandBase
-    {
-        public NavigationCommand(Statement statement) : base(statement)
-        {
-        }
-    }
-
-    public class ResizeCommand : CommandBase
-    {
-        public ResizeCommand(Statement statement) : base(statement)
-        {
-        }
-    }
-
-    public class ExpectCommand : CommandBase
-    {
-        public ExpectCommand(Statement statement) : base(statement)
-        {
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿namespace TestScriptRunner
+﻿namespace TestScriptRunner.Commands
 {
     public class ClickCommand : CommandBase
     {

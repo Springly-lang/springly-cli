@@ -1,21 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
+using TestScriptRunner.Commands;
 
 namespace TestScriptRunner
 {
     public class Evaluator
     {
-        public static IEnumerable<CommandBase> Eval(IEnumerable<Statement> statements)
+        public static EvaluationResult Eval(IEnumerable<CommandBase> commands)
         {
-            var list = new List<CommandBase>();
-
-            foreach (var statement in statements)
-            {
-                var command = CommandFactory.Create(statement);
-                list.Add(command);
-            }
-
-            return list;
+            return new EvaluationResult();
         }
+    }
+
+    public class EvaluationResult
+    {
+
     }
 }
