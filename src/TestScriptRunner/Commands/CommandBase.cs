@@ -1,4 +1,6 @@
-﻿namespace TestScriptRunner.Commands
+﻿using System;
+
+namespace TestScriptRunner.Commands
 {
     public abstract class CommandBase
     {
@@ -25,24 +27,16 @@
 
         public Statement Statement { get; }
 
-        public virtual CommandExecutionResult Execute(CommandExecutionContext context)
-        {
-            return CommandExecutionResult.SuccessCommand;
-        }
-    }
+        public abstract CommandExecutionResult Execute(CommandExecutionContext context);
 
-    public class CommandExecutionResult
-    {
-        public static readonly CommandExecutionResult SuccessCommand = new CommandExecutionResult(true, null);
-
-        public CommandExecutionResult(bool success, string[] errorMessages)
+        public static Exception ThrowTokenExpected(TokenType expectedToken, TokenType actualToken, string fileName)
         {
-            Success = success;
-            ErrorMessages = errorMessages;
+            return new SyntaxErrorException($"'{expectedToken}' was expected but '{actualToken}' was found.", fileName);
         }
 
-        public string[] ErrorMessages { get; }
-
-        public bool Success { get; }
+        public static Exception ThrowTokenExpected(TokenType expectedToken, string fileName)
+        {
+            return new SyntaxErrorException($"'{expectedToken}' was expected but was not found.", fileName);
+        }
     }
 }

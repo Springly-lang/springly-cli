@@ -5,5 +5,10 @@
         public ResizeCommand(Statement statement) : base(statement)
         {
         }
+
+        public override CommandExecutionResult Execute(CommandExecutionContext context)
+        {
+            return CommandExecutionResult.SuccessCommand;
+        }
     }
 }

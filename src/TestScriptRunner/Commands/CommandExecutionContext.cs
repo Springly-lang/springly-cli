@@ -1,4 +1,8 @@
-﻿using TestScriptRunner.UseDefinitions;
+﻿using OpenQA.Selenium;
+using OpenQA.Selenium.Chrome;
+using OpenQA.Selenium.Edge;
+using OpenQA.Selenium.Firefox;
+using TestScriptRunner.UseDefinitions;
 
 namespace TestScriptRunner.Commands
 {
@@ -14,6 +18,24 @@ namespace TestScriptRunner.Commands
         public TestCaseSourceFile SourceFile { get; set; }
 
         public string TestCaseTitle { get; set; }
+
         public ILogger Logger { get; }
+
+        public IWebDriver WebDriver { get; private set; }
+
+        public void SetChromeDriver()
+        {
+            WebDriver = new ChromeDriver();
+        }
+
+        public void SetFirefoxDriver()
+        {
+            WebDriver = new FirefoxDriver();
+        }
+
+        public void SetEdgeDriver()
+        {
+            WebDriver = new EdgeDriver();
+        }
     }
 }
