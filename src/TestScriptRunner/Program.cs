@@ -12,7 +12,7 @@ namespace TestScriptRunner
 
         static void Main(string[] args)
         {
-            Info("Welcome to Test Script runner V1.0");
+            Info("Welcome to Springly test script runner v1.0");
             if (args?.Length == 0)
             {
                 Error("No script file is specified.");
@@ -34,6 +34,7 @@ namespace TestScriptRunner
 
             try
             {
+                Info("Test script execution started...");
                 var result = TestEngine.Execute(testCaseFiles);
 
                 Info(result.ToString());

@@ -1,12 +1,21 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace TestScriptRunner
 {
-    internal class Evaluator
+    public class Evaluator
     {
-        internal static void Eval(object syntaxTree)
+        public static IEnumerable<CommandBase> Eval(IEnumerable<Statement> statements)
         {
-            throw new NotImplementedException();
+            var list = new List<CommandBase>();
+
+            foreach (var statement in statements)
+            {
+                var command = CommandFactory.Create(statement);
+                list.Add(command);
+            }
+
+            return list;
         }
     }
 }

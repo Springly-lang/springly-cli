@@ -73,7 +73,7 @@ namespace TestScriptRunner
                 }
             }
 
-            return new ReadOnlyCollection<Token>(tokens);
+            return new ReadOnlyCollection<Token>(tokens.Where(x => x.TokenType != TokenType.WhiteSpace).ToList());
         }
     }
 }

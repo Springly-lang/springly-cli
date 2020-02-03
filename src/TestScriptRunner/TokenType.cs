@@ -31,7 +31,7 @@
 
         [TokenDefinition("^appears")]
         Appears,
-        
+
         [TokenDefinition("^disappears")]
         Disappears,
 
@@ -98,6 +98,9 @@
         [TokenDefinition("^of")]
         Of,
 
+        [TokenDefinition("^be")]
+        Be,
+
         [TokenDefinition("^(seconds|second)")]
         Seconds,
 
@@ -107,10 +110,10 @@
         [TokenDefinition("^(hours|hour)")]
         Hours,
 
-        [TokenDefinition("^equals")]
+        [TokenDefinition("^(equals|equal)")]
         Equal,
 
-        [TokenDefinition("^contains")]
+        [TokenDefinition("^(contains|contain)")]
         Contain,
 
         [TokenDefinition("^not")]

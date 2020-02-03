@@ -8,9 +8,9 @@
             {
                 var tokens = Lexer.Tokenize(scriptFile);
 
-                var syntaxTree = LLParser.Parse(tokens);
+                var statements = LLParser.Parse(scriptFile, tokens);
 
-                Evaluator.Eval(syntaxTree);
+                Evaluator.Eval(statements);
             }
 
             return new ExecutionResult();
