@@ -26,17 +26,17 @@ use "google-page-definitions.json"
 
 test case "Search Google"
 	// Arrange
-	open browser
+	open chrome browser
 	navigate to "https://google.com"
 	
 	// Act
-	type "pluto" in search-box
-	click on search-button
+	type "pluto" in @search-box
+	click on @search-button
 
 	// Assert
-	expect url contains "https://www.google.com/search?q=pluto"
-	expect search-result-title contains "About 78,300,000 results"
-	expect 1st search-result-tile-title contains "pluto"
+	expect @url contains "https://www.google.com/search?q=pluto"
+	expect @search-result-title contains "About 78,300,000 results"
+	expect 1st @search-result-tile-title contains "pluto"
 
 	close browser
 ```
