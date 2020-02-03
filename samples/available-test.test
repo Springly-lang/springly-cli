@@ -7,27 +7,27 @@ test case "Available Test"
 	maximize browser
 	
 	click on "tour-tab"
-	type "tehran" in "origin-city"
-	type "istanbul" in "destination-city"
-	select "this month" from "range-date"
-	check "luxary tours", "last second" from "tour-types"
-	click "search"
+	type "tehran" in @origin-city
+	type "istanbul" in @destination-city
+	select @this-month from @range-date
+	check @luxary-tours, @last-second from @tour-types
+	click @search-button
 	
 	wait for 10 seconds
-	wait until "search-result-tile" appears
+	wait until @search-result-tile appears
 	
-	expect "page title" be equal to "10 rows found"
-	expect "search right side bar" contains "4 tours for istanbul"
+	expect @page-title be equal to "10 rows found"
+	expect @search-right-side-bar" contains "4 tours for istanbul"
 	
 	resize browser to "800x600"
-	scroll to 10th "search-result-tile"
+	scroll to 10th @search-result-tile
 	
-	expect number of "search-result-tile" be equal 10
-	expect 10th "search-result-tile" contains "exceptional tour!"
+	expect number of @search-result-tile be equal 10
+	expect 10th @search-result-tile contains "exceptional tour!"
 	
-	scroll to 1st "search-result-tile"
-	click on 1st "search-result-tile"
+	scroll to 1st @search-result-tile
+	click on 1st @search-result-tile
 	
-	expect "url" contains "available/10213"
+	expect @url contains "available/10213"
 	
 	close browser

@@ -9,12 +9,12 @@
         Colon,
 
         [TokenDefinition("^(\"(?<value>[^\"]+)\"|'(?<value>[^']+)')")]
-        StringValue,
+        StringLiteral,
 
         [TokenDefinition("^(?<value>\\d+[^\\w+])")]
-        NumericValue,
+        NumericLiteral,
 
-        [TokenDefinition("^@(?<value>[^\\s]+)")]
+        [TokenDefinition("^@(?<value>[^\\s,]+)")]
         ElementIdentifier,
 
         [TokenDefinition("^browser")]
@@ -121,6 +121,9 @@
 
         [TokenDefinition("^(expects|expect)")]
         Expect,
+
+        //[TokenDefinition("^([a-zA-Z][a-zA-Z0-9_\\-]*)")]
+        //Identifier,
 
         [TokenDefinition("^(\\r\\n|\\n)")]
         NewLine,

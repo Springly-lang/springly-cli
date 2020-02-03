@@ -23,7 +23,7 @@ namespace TestScriptRunner
                     }
                 }
 
-                Evaluator.Eval(commandList);
+                Evaluator.Eval(scriptFile, commandList);
             }
 
             return new ExecutionResult();

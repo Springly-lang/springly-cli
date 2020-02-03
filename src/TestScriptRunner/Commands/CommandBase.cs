@@ -9,6 +9,12 @@
             public NoOpCommand() : base(null)
             {
             }
+
+            public override CommandExecutionResult Execute(CommandExecutionContext context)
+            {
+                // No Ops
+                return CommandExecutionResult.Empty;
+            }
         }
 
 
@@ -18,5 +24,15 @@
         }
 
         public Statement Statement { get; }
+
+        public virtual CommandExecutionResult Execute(CommandExecutionContext context)
+        {
+            return CommandExecutionResult.Empty;
+        }
+    }
+
+    public class CommandExecutionResult
+    {
+        public static readonly CommandExecutionResult Empty = new CommandExecutionResult();
     }
 }
