@@ -7,19 +7,20 @@ namespace TestScriptRunner
     {
         public int Index { get; }
         public int Line { get; }
+        public string FileName { get; }
 
-        public SyntaxErrorException(int index, int line, string source, string fileName) : base($"Invalid syntax at column {index} line {line}: {FromSource(source, line)} in '{fileName}'")
+        public SyntaxErrorException(string message, string fileName) : base(message)
+        {
+            FileName = fileName;
+        }
+
+        public SyntaxErrorException(int index, int line, string source, string fileName) : this($"Invalid syntax at column {index} line {line}: {FromSource(source, line)} in '{fileName}'", fileName)
         {
             Index = index;
             Line = line;
+            FileName = fileName;
         }
 
-        public SyntaxErrorException(int index, int line, TokenType expectedTokenType, TokenType actualTokenType)
-            : base($"Invalid Syntax at {index} line {line}. '{expectedTokenType}' was expected but '{actualTokenType}' was found.")
-        {
-            Index = index;
-            Line = line;
-        }
 
         private static string FromSource(string source, int line)
         {
