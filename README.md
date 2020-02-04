@@ -8,7 +8,7 @@ Writing automation tests for web applications have many challenges like:
 
 * Most QA members don't have enough skills in programming languages or web development technologies.
 
-* Current automation tests are tightly coupled with the design and small changes in design which can break related automated tests.
+* Current automation tests are tightly coupled with the design and small changes in design can break related automated tests.
 
 * QA's responsibilites and concerns are different from design and development.
 
@@ -18,7 +18,7 @@ The solution is, implementing a language that resolves those challenges by separ
 
 * Decoupling design and web knowledge from test scenario scripts so changes in one have minimum effect on the other party.
 
-* QA members focus on writing automation tests (even before the actual implementation!) and web developers can continue doing anything that is directly related to the implementation details.
+* QA members can focus on writing automation tests (even before the actual implementation!) and web developers can continue doing anything that is directly related to the implementation details.
 
 Here is a sample Springly script:
 ```
