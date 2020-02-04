@@ -3,20 +3,13 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text.RegularExpressions;
+using TestScriptRunner.Utils;
 
 namespace TestScriptRunner
 {
     public class Lexer : ILexer
     {
-        private static string GetTokenTypePattern(TokenType tokenType)
-        {
-            var enumMember = typeof(TokenType).GetMember(tokenType.ToString())[0];
-            var enumAttr = enumMember.GetCustomAttributes(typeof(TokenDefinitionAttribute), false)
-                            .Select(x => x as TokenDefinitionAttribute)
-                            .FirstOrDefault();
-            return enumAttr?.Pattern;
-        }
-
+        
         public IEnumerable<Token> Tokenize(TestCaseSourceFile file)
         {
             var script = file.Content;
@@ -31,7 +24,7 @@ namespace TestScriptRunner
                             .ToArray();
 
             var tokenTypeList = (TokenType[])Enum.GetValues(typeof(TokenType));
-            var definitions = tokenTypeList.OrderBy(tokenType => (int)tokenType).ToDictionary(tokenType => tokenType, GetTokenTypePattern);
+            var definitions = tokenTypeList.OrderBy(tokenType => (int)tokenType).ToDictionary(tokenType => tokenType, ReflectionHelpers.GetTokenTypePattern);
 
             var lineNumber = 1;
             var nextIndex = 0;

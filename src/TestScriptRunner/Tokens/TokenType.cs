@@ -2,133 +2,133 @@
 {
     public enum TokenType
     {
-        [TokenDefinition("^\\\\.+\n")]
+        [TokenDefinition("^\\\\.+\n", false)]
         Comment = 1,
 
-        [TokenDefinition("^,")]
+        [TokenDefinition("^,", false)]
         Colon,
 
-        [TokenDefinition("^(\"(?<value>[^\"]+)\"|'(?<value>[^']+)')")]
+        [TokenDefinition("^(\"(?<value>[^\"]+)\"|'(?<value>[^']+)')", false)]
         StringLiteral,
 
-        [TokenDefinition("^(?<value>\\d+[^\\w+])")]
+        [TokenDefinition("^(?<value>\\d+[^\\w+])", false)]
         NumericLiteral,
 
-        [TokenDefinition("^@(?<value>[^\\s,]+)")]
+        [TokenDefinition("^@(?<value>[^\\s,]+)", false)]
         ElementIdentifier,
 
-        [TokenDefinition("^browser")]
+        [TokenDefinition("^browser", true)]
         Browser,
 
-        [TokenDefinition("^use")]
+        [TokenDefinition("^use", true)]
         Use,
 
-        [TokenDefinition("^test(\\s+)case")]
+        [TokenDefinition("^test(\\s+)case", true)]
         TestCase,
 
-        [TokenDefinition("^open")]
+        [TokenDefinition("^open", true)]
         Open,
 
-        [TokenDefinition("^appears")]
+        [TokenDefinition("^appears", true)]
         Appears,
 
-        [TokenDefinition("^disappears")]
+        [TokenDefinition("^disappears", true)]
         Disappears,
 
-        [TokenDefinition("^navigate")]
+        [TokenDefinition("^navigate", true)]
         Navigate,
 
-        [TokenDefinition("^maximize")]
+        [TokenDefinition("^maximize", true)]
         Maximize,
 
-        [TokenDefinition("^minimize")]
+        [TokenDefinition("^minimize", true)]
         Minimize,
 
-        [TokenDefinition("^from")]
+        [TokenDefinition("^from", true)]
         From,
 
-        [TokenDefinition("^select")]
+        [TokenDefinition("^select", true)]
         Select,
 
-        [TokenDefinition("^check")]
+        [TokenDefinition("^check", true)]
         Check,
 
-        [TokenDefinition("^click")]
+        [TokenDefinition("^click", true)]
         Click,
 
-        [TokenDefinition("^right(\\s+)click")]
+        [TokenDefinition("^right(\\s+)click", true)]
         RightClick,
 
-        [TokenDefinition("^double(\\s+)click")]
+        [TokenDefinition("^double(\\s+)click", true)]
         DoubleClick,
 
-        [TokenDefinition("^type")]
+        [TokenDefinition("^type", true)]
         Type,
 
-        [TokenDefinition("^wait(\\s+)until")]
+        [TokenDefinition("^wait(\\s+)until", true)]
         WaitUntil,
 
-        [TokenDefinition("^wait(\\s+)for")]
+        [TokenDefinition("^wait(\\s+)for", true)]
         WaitFor,
 
-        [TokenDefinition("^number")]
+        [TokenDefinition("^number", true)]
         Number,
 
-        [TokenDefinition("^scroll")]
+        [TokenDefinition("^scroll", true)]
         ScrollTo,
 
-        [TokenDefinition("^resize")]
+        [TokenDefinition("^resize", true)]
         Resize,
 
-        [TokenDefinition("^close")]
+        [TokenDefinition("^close", true)]
         Close,
 
-        [TokenDefinition("^((?<value>1)st|(?<value>2)nd|(?<value>3)rd|(?<value>\\d+)th)")]
+        [TokenDefinition("^((?<value>1)st|(?<value>2)nd|(?<value>3)rd|(?<value>\\d+)th)", false)]
         OrdinalNumber,
 
-        [TokenDefinition("^in")]
+        [TokenDefinition("^in", true)]
         In,
 
-        [TokenDefinition("^to")]
+        [TokenDefinition("^to", true)]
         To,
 
-        [TokenDefinition("^on")]
+        [TokenDefinition("^on", true)]
         On,
 
-        [TokenDefinition("^of")]
+        [TokenDefinition("^of", true)]
         Of,
 
-        [TokenDefinition("^be")]
+        [TokenDefinition("^be", true)]
         Be,
 
-        [TokenDefinition("^(seconds|second)")]
+        [TokenDefinition("^(seconds|second)", true)]
         Seconds,
 
-        [TokenDefinition("^(minutes|minute)")]
+        [TokenDefinition("^(minutes|minute)", true)]
         Minutes,
 
-        [TokenDefinition("^(hours|hour)")]
+        [TokenDefinition("^(hours|hour)", true)]
         Hours,
 
-        [TokenDefinition("^(equals|equal)")]
+        [TokenDefinition("^(equals|equal)", true)]
         Equal,
 
-        [TokenDefinition("^(contains|contain)")]
+        [TokenDefinition("^(contains|contain)", true)]
         Contain,
 
-        [TokenDefinition("^not")]
+        [TokenDefinition("^not", true)]
         Not,
 
-        [TokenDefinition("^(expects|expect)")]
+        [TokenDefinition("^(expects|expect)", true)]
         Expect,
 
         //[TokenDefinition("^([a-zA-Z][a-zA-Z0-9_\\-]*)")]
         //Identifier,
 
-        [TokenDefinition("^(\\r\\n|\\n)")]
+        [TokenDefinition("^(\\r\\n|\\n)", false)]
         NewLine,
 
-        [TokenDefinition("^\\s+")]
+        [TokenDefinition("^\\s+", false)]
         WhiteSpace
     }
 }
