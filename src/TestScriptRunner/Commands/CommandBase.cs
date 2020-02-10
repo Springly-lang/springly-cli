@@ -38,5 +38,10 @@ namespace TestScriptRunner.Commands
         {
             return new SyntaxErrorException($"'{expectedToken}' was expected but was not found.", fileName);
         }
+
+        public static Exception ThrowInvalidStringLiteral(string message, string fileName)
+        {
+            return new SyntaxErrorException(message, fileName);
+        }
     }
 }
