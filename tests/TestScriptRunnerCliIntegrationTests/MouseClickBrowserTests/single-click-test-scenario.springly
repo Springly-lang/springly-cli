@@ -4,4 +4,4 @@ test case 'Single Click'
   open 'chrome' browser
   navigate to '$INDEX_FILE_PATH$'
   click on "clickable-button"
-  #close 'chrome' browser
+  close 'chrome' browser
