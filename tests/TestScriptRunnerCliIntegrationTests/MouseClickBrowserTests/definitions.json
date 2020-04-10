@@ -1,0 +1,8 @@
+﻿{
+  "clickable-button": {
+    "css-selector": "button#clickable-button"
+  },
+  "click-counter": {
+    "css-selector": "div#button-click-counter"
+  }
+}

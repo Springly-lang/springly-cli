@@ -4,6 +4,7 @@ using TestScript.Common;
 using TestScript.Common.Instructions;
 using TestScriptRunner.Common.UseDefinitions;
 using TestScriptRunner.Language.Ast;
+using TestScriptRunner.Language.Ast.BrowserNodes;
 
 namespace TestScriptRunner.Language.Visitors
 {
@@ -30,6 +31,22 @@ namespace TestScriptRunner.Language.Visitors
         {
             // System.Diagnostics.Debugger.Break();
         }
+
+        public void Visit(ClickBrowserNode node)
+        {
+            Context.LastTestCase.Instructions.Add(new ClickBrowserInstruction(ClickType.SingleClick, node.Identifier));
+        }
+
+        public void Visit(DoubleClickBrowserNode node)
+        {
+            Context.LastTestCase.Instructions.Add(new ClickBrowserInstruction(ClickType.DoubleClick, node.Identifier));
+        }
+
+        public void Visit(RightClickBrowserNode node)
+        {
+            Context.LastTestCase.Instructions.Add(new ClickBrowserInstruction(ClickType.RightClick, node.Identifier));
+        }
+
 
         public void Visit(DefinitionNode node)
         {

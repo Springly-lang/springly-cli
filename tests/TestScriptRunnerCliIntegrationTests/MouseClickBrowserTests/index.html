@@ -1,0 +1,30 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    <button id="clickable-button" 
+            ondblclick="onButtonDoubleClick(event)"
+            onclick="onButtonClick(event)" 
+            oncontextmenu="onButtonRightClick(event)">Click Me!</button>
+    
+    <div id="button-click-result"></div>
+
+    <script>
+        function onButtonDoubleClick(e) {
+            document.getElementById('button-click-result').innerHTML = 'Double Click';
+        }
+
+        function onButtonClick(e) {
+            document.getElementById('button-click-result').innerHTML = 'Single Click';
+        }
+
+        function onButtonRightClick(e) {
+            document.getElementById('button-click-result').innerHTML = 'Right Click';
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,7 @@
+﻿use 'definitions.json'
+
+test case 'Single Click'
+  open 'chrome' browser
+  navigate to '$INDEX_FILE_PATH$'
+  right click on "clickable-button"
+  #close 'chrome' browser
