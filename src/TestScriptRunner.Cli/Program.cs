@@ -9,7 +9,7 @@ using TestScriptRunner.SeleniumDriver;
 
 namespace TestScriptRunner.Cli
 {
-    class Program
+    public class Program
     {
         public Program(ISourceFileReader fileReader, ITestScriptInterpreter interpreter, ITestScriptExecuter executer)
         {

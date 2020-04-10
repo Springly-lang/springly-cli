@@ -5,6 +5,7 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <AssemblyName>Springly</AssemblyName>
     <StartupObject>TestScriptRunner.Cli.Program</StartupObject>
+    <Version>0.0.3</Version>
   </PropertyGroup>
 
   <ItemGroup>
