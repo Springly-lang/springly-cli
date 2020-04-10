@@ -40,6 +40,10 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestScriptRunner.Cli.IntegrationTests", "tests\TestScriptRunnerCliIntegrationTests\TestScriptRunner.Cli.IntegrationTests.csproj", "{FE9686E6-81F8-4724-B96F-550A11951CDE}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tools", "tools", "{CFB4AF63-C3C5-4CBC-AF1A-BFB91981C924}"
+	ProjectSection(SolutionItems) = preProject
+		.github\workflows\dotnetcore.yml = .github\workflows\dotnetcore.yml
+		test-cleanup.sh = test-cleanup.sh
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
