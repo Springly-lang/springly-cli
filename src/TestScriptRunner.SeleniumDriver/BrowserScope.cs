@@ -1,5 +1,6 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using TestScriptRunner.Common.UseDefinitions;
@@ -16,7 +17,18 @@ namespace TestScriptRunner.SeleniumDriver
             get => Drivers[browserName];
         }
 
-        public void Define(string browserName) => Drivers.Add(browserName, new ChromeDriver());
+        public void Define(string browserName)
+        {
+            var chromeDriverPath = Environment.GetEnvironmentVariable("CHROMEWEBDRIVER", EnvironmentVariableTarget.Machine);
+            if (string.IsNullOrWhiteSpace(chromeDriverPath))
+            {
+                Drivers.Add(browserName, new ChromeDriver());
+            }
+            else
+            {
+                Drivers.Add(browserName, new ChromeDriver(chromeDriverPath));
+            }
+        }
 
         public void DefineDefaultBrowser() => Define(WellKnownDriverNames.DefaultBrowserName);
 
@@ -31,7 +43,7 @@ namespace TestScriptRunner.SeleniumDriver
     {
         public static IWebElement FindByDefinition(this IWebDriver driver, TestCaseDefinition definition)
         {
-            if(definition.Type == DefinitionType.CssSelector)
+            if (definition.Type == DefinitionType.CssSelector)
             {
                 return driver.FindElement(By.CssSelector(definition.CssSelector));
             }
