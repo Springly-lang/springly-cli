@@ -1,5 +1,6 @@
 ﻿namespace TestScriptRunner.Commands
 {
+    [CommandPattern("open [value] browser")]
     public class OpenCommand : CommandBase
     {
         public OpenCommand(Statement statement) : base(statement)

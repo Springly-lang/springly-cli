@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "TestScriptRunner.Cli": {
+      "commandName": "Project",
+      "commandLineArgs": "C:\\Projects\\Personal\\TestScriptRunner\\samples\\basic-sample.test"
+    }
+  }
+}

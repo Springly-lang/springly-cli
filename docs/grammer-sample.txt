@@ -1,0 +1,17 @@
+statement => <command> <value>
+			 | <command> <identifier>
+			 | <command> on <identifier>
+			 | <command> <value> from <identifier>
+			 | <command> <value> in <identifier>
+			 | <command> for <value>
+			 | <command> until <value>
+			 | <command> until <identifier> <value>
+			 | <command> to <value> <identifier>
+			 | expect <assert>
+			 
+identifier => @[a-zA-Z][]
+			 
+assert => number of <identifier> <compare> <value>
+			 | <index> <identifier> <compare> <value>
+
+compare => contains | equal to | not equal to | greater than | greater than or equal to | less than | less than or equal to

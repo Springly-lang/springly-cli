@@ -8,8 +8,7 @@ using TestScriptRunner.Utils;
 namespace TestScriptRunner
 {
     public class Lexer : ILexer
-    {
-        
+    {        
         public IEnumerable<Token> Tokenize(TestCaseSourceFile file)
         {
             var script = file.Content;
@@ -18,10 +17,6 @@ namespace TestScriptRunner
             {
                 return Enumerable.Empty<Token>();
             }
-
-            var commands = script.Split('\n', StringSplitOptions.None)
-                            .Select(command => command.Trim())
-                            .ToArray();
 
             var tokenTypeList = (TokenType[])Enum.GetValues(typeof(TokenType));
             var definitions = tokenTypeList.OrderBy(tokenType => (int)tokenType).ToDictionary(tokenType => tokenType, ReflectionHelpers.GetTokenTypePattern);

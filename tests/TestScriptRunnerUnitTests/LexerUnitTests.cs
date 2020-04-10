@@ -1,5 +1,4 @@
 using System.Linq;
-using TestScriptRunner;
 using Xunit;
 
 namespace TestScriptRunnerUnitTests
@@ -11,7 +10,7 @@ namespace TestScriptRunnerUnitTests
         [Fact]
         public void Tokenize_ForEmptyScript_ReturnsZeroToken()
         {
-            var emptyFile = new TestCaseSourceFile(SampleScriptFile, " \t \n ");
+            var emptyFile = new SourceFile(SampleScriptFile, " \t \n ");
             var tokens = new Lexer().Tokenize(emptyFile);
             Assert.Empty(tokens);
         }

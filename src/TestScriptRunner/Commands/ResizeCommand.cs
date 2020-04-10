@@ -8,7 +8,13 @@ namespace TestScriptRunner.Commands
     {
         public ResizeCommand(Statement statement) : base(statement)
         {
+            CommandParser.Create(statement).StartsWith(TokenType.Resize)
+                .WithOptionalFollowing(TokenType.Browser)
+                .WithOptionalFollowing(TokenType.To)
+                .WithValue(TokenType.StringLiteral, value => Dimentions = value);
         }
+
+        protected string Dimentions { get; set; }
 
         public override CommandExecutionResult Execute(CommandExecutionContext context)
         {

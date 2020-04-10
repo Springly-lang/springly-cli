@@ -1,13 +1,16 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <OutputType>Exe</OutputType>
     <TargetFramework>netcoreapp3.1</TargetFramework>
-    <AssemblyName>Springly</AssemblyName>
-    <StartupObject>TestScriptRunner.Program</StartupObject>
   </PropertyGroup>
+
   <ItemGroup>
-    <PackageReference Include="newtonsoft.json" Version="12.0.3" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="3.1.3" />
     <PackageReference Include="Selenium.WebDriver" Version="3.141.0" />
   </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\TestScriptRunner.Driver\TestScriptRunner.Driver.csproj" />
+  </ItemGroup>
+
 </Project>

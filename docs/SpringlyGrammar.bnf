@@ -1,0 +1,10 @@
+<Program> ::= <DefinitionList> <TestCaseList>
+<DefinitionList> ::= <Definition>+
+<Definition> ::= "use" <StringLiteral>
+<TestCaseList> ::= <TestCase>+
+<TestCase> ::= "test" "case" <Identifier> <CommandList>
+<CommandList> ::= <Command>+
+<Command> ::= <OpenBrowserCommand> | <NavigateBrowserCommand> | <CloseBrowserCommand>
+<OpenBrowserCommand> ::= "open" <StringLiteral> "browser"
+<NavigateBrowserCommand> ::= "navigate" "to" <StringLiteral>
+<CloseBrowserCommand> ::= "close" <StringLiteral> "browser"
