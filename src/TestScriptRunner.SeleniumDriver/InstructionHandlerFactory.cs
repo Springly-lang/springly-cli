@@ -17,6 +17,9 @@ namespace TestScriptRunner.SeleniumDriver
             if (instruction is BrowserNavigateInstruction browserNavigateInstruction)
                 return new NavigateBrowserHandler(browserNavigateInstruction);
 
+            if (instruction is ClickBrowserInstruction clickBrowserInstruction)
+                return new ClickBrowserHandler(clickBrowserInstruction);
+
             throw new NotSupportedException($"Instruction {instruction} is not supported by this driver.");
         }
     }

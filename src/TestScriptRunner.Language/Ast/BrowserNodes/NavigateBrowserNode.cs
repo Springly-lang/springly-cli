@@ -2,7 +2,7 @@
 using Irony.Parsing;
 using TestScriptRunner.Language.Visitors;
 
-namespace TestScriptRunner.Language.Ast
+namespace TestScriptRunner.Language.Ast.BrowserNodes
 {
     public class NavigateBrowserNode : BaseAstNode
     {

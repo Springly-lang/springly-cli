@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.IO;
 
 namespace TestScript.Common
 {
@@ -17,6 +18,8 @@ namespace TestScript.Common
             {
                 if (SourceFile.TryCreate(arg, out SourceFile sourceFile))
                     sourceFiles.Add(sourceFile);
+                else
+                    throw new FileNotFoundException("Test scenario file not found.", arg);
             }
 
             return sourceFiles;

@@ -2,6 +2,7 @@
 using OpenQA.Selenium.Chrome;
 using System.Collections.Generic;
 using System.Linq;
+using TestScriptRunner.Common.UseDefinitions;
 using TestScriptRunner.Driver;
 
 namespace TestScriptRunner.SeleniumDriver
@@ -24,5 +25,32 @@ namespace TestScriptRunner.SeleniumDriver
         public bool IsEmpty => Drivers.Count == 0;
 
         public IWebDriver Default => this[WellKnownDriverNames.DefaultBrowserName] ?? Drivers.Values.FirstOrDefault();
+    }
+
+    public static class IWebDriverExtensions
+    {
+        public static IWebElement FindByDefinition(this IWebDriver driver, TestCaseDefinition definition)
+        {
+            if(definition.Type == DefinitionType.CssSelector)
+            {
+                return driver.FindElement(By.CssSelector(definition.CssSelector));
+            }
+            else
+            {
+                return driver.FindElement(By.XPath(definition.XPath));
+            }
+        }
+
+        public static IEnumerable<IWebElement> FindManyByDefinition(this IWebDriver driver, TestCaseDefinition definition)
+        {
+            if (definition.Type == DefinitionType.CssSelector)
+            {
+                return driver.FindElements(By.CssSelector(definition.CssSelector));
+            }
+            else
+            {
+                return driver.FindElements(By.XPath(definition.XPath));
+            }
+        }
     }
 }

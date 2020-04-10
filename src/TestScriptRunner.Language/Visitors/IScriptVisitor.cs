@@ -1,5 +1,6 @@
 ﻿using Irony.Interpreter.Ast;
 using TestScriptRunner.Language.Ast;
+using TestScriptRunner.Language.Ast.BrowserNodes;
 
 namespace TestScriptRunner.Language.Visitors
 {
@@ -11,5 +12,8 @@ namespace TestScriptRunner.Language.Visitors
         void Visit(OpenBrowserNode node);
         void Visit(NavigateBrowserNode node);
         void Visit(CloseBrowserNode node);
+        void Visit(ClickBrowserNode node);
+        void Visit(DoubleClickBrowserNode node);
+        void Visit(RightClickBrowserNode node);
     }
 }

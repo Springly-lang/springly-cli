@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using TestScript.Common;
 using TestScriptRunner.Common.UseDefinitions;
 using TestScriptRunner.Language.Ast;
@@ -46,7 +47,11 @@ namespace TestScriptRunner.Language
                         break;
 
                     case ParseTreeStatus.Error:
-                        throw new InvalidOperationException(tree.ParserMessages[0].Message);
+
+                        var exceptions = tree.ParserMessages.Select(message =>
+                            new InvalidOperationException($"Syntax error at '{testFile.FileName}':{message.Location}\t {message.Message}"));
+
+                        throw new AggregateException(exceptions);
                 }
             }
         }
