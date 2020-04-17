@@ -1,8 +1,8 @@
 ﻿using OpenQA.Selenium;
 using System.Collections.Generic;
-using TestScriptRunner.Common.UseDefinitions;
+using SpringlyLang.Common.UseDefinitions;
 
-namespace TestScriptRunner.SeleniumDriver
+namespace SpringlyLang.SeleniumDriver
 {
     public interface IInstructionHandler
     {

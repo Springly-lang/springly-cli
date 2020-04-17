@@ -2,7 +2,7 @@
 using System.Linq;
 using System.Text.RegularExpressions;
 
-namespace TestScriptRunner.Commands
+namespace SpringlyLang.Commands
 {
     public class ResizeCommand : CommandBase
     {

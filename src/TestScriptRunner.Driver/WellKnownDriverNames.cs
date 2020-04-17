@@ -1,4 +1,4 @@
-﻿namespace TestScriptRunner.Driver
+﻿namespace SpringlyLang.Driver
 {
     public static class WellKnownDriverNames
     {

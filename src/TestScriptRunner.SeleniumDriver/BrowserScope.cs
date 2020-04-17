@@ -4,10 +4,10 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using TestScriptRunner.Common.UseDefinitions;
-using TestScriptRunner.Driver;
+using SpringlyLang.Common.UseDefinitions;
+using SpringlyLang.Driver;
 
-namespace TestScriptRunner.SeleniumDriver
+namespace SpringlyLang.SeleniumDriver
 {
     public class BrowserScope
     {

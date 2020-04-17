@@ -1,4 +1,4 @@
-﻿namespace TestScriptRunner.Commands
+﻿namespace SpringlyLang.Commands
 {
     [CommandPattern("open [value] browser")]
     public class OpenCommand : CommandBase

@@ -1,8 +1,8 @@
 ﻿using System;
-using TestScript.Common.Instructions;
-using TestScriptRunner.SeleniumDriver.Handlers;
+using SpringlyLang.Common.Instructions;
+using SpringlyLang.SeleniumDriver.Handlers;
 
-namespace TestScriptRunner.SeleniumDriver
+namespace SpringlyLang.SeleniumDriver
 {
     public class InstructionHandlerFactory : IInstructionHandlerFactory
     {

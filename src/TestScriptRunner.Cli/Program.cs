@@ -1,13 +1,13 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using System;
-using TestScript.Common;
-using TestScriptRunner.Common.UseDefinitions;
-using TestScriptRunner.Driver;
-using TestScriptRunner.Language;
-using TestScriptRunner.SeleniumDriver;
+using SpringlyLang.Common;
+using SpringlyLang.Common.UseDefinitions;
+using SpringlyLang.Driver;
+using SpringlyLang.Language;
+using SpringlyLang.SeleniumDriver;
 
-namespace TestScriptRunner.Cli
+namespace SpringlyLang.Cli
 {
     public class Program
     {

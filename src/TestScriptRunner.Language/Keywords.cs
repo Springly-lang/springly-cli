@@ -1,4 +1,4 @@
-﻿namespace TestScriptRunner.Language
+﻿namespace SpringlyLang.Language
 {
     public static class Keywords
     {

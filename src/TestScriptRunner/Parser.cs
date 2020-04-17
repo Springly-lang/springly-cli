@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-namespace TestScriptRunner
+namespace SpringlyLang
 {
     public class Parser : IParser
     {

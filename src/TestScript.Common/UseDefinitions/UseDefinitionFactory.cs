@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json.Linq;
 using System.IO;
 
-namespace TestScriptRunner.Common.UseDefinitions
+namespace SpringlyLang.Common.UseDefinitions
 {
     public class UseDefinitionFactory : IUseDefinitionFactory
     {

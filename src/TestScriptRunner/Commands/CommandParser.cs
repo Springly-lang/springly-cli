@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq;
 
-namespace TestScriptRunner.Commands
+namespace SpringlyLang.Commands
 {
     public interface ICommandParser
     {

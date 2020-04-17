@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq;
 
-namespace TestScriptRunner
+namespace SpringlyLang
 {
     public class SyntaxErrorException : Exception
     {

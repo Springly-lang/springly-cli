@@ -1,6 +1,6 @@
-﻿using TestScriptRunner.Language.Visitors;
+﻿using SpringlyLang.Language.Visitors;
 
-namespace TestScriptRunner.Language.Ast.BrowserNodes
+namespace SpringlyLang.Language.Ast.BrowserNodes
 {
     public class CloseBrowserNode : BaseAstNode
     {

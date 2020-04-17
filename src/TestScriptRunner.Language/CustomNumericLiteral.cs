@@ -4,9 +4,9 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using System.Threading;
-using TestScriptRunner.Language.Ast;
+using SpringlyLang.Language.Ast;
 
-namespace TestScriptRunner.Language
+namespace SpringlyLang.Language
 {
     public class CustomNumericLiteral : Terminal
     {

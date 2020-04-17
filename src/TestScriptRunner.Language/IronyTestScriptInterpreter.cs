@@ -3,12 +3,12 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using TestScript.Common;
-using TestScriptRunner.Common.UseDefinitions;
-using TestScriptRunner.Language.Ast;
-using TestScriptRunner.Language.Visitors;
+using SpringlyLang.Common;
+using SpringlyLang.Common.UseDefinitions;
+using SpringlyLang.Language.Ast;
+using SpringlyLang.Language.Visitors;
 
-namespace TestScriptRunner.Language
+namespace SpringlyLang.Language
 {
     public class IronyTestScriptInterpreter : ITestScriptInterpreter
     {

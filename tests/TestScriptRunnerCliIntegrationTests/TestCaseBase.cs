@@ -2,13 +2,13 @@
 using Moq;
 using System.IO;
 using System.Linq;
-using TestScript.Common;
-using TestScriptRunner.Cli;
-using TestScriptRunner.Common.UseDefinitions;
-using TestScriptRunner.Language;
-using TestScriptRunner.SeleniumDriver;
+using SpringlyLang.Common;
+using SpringlyLang.Cli;
+using SpringlyLang.Common.UseDefinitions;
+using SpringlyLang.Language;
+using SpringlyLang.SeleniumDriver;
 
-namespace TestScriptRunnerCliIntegrationTests
+namespace SpringlyLangCliIntegrationTests
 {
     public abstract class TestCaseBase
     {

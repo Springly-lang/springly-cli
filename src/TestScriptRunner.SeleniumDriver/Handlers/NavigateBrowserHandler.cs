@@ -3,11 +3,11 @@ using OpenQA.Selenium.Chrome;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
-using TestScript.Common.Instructions;
-using TestScriptRunner.Common.UseDefinitions;
-using TestScriptRunner.Driver;
+using SpringlyLang.Common.Instructions;
+using SpringlyLang.Common.UseDefinitions;
+using SpringlyLang.Driver;
 
-namespace TestScriptRunner.SeleniumDriver.Handlers
+namespace SpringlyLang.SeleniumDriver.Handlers
 {
     public class NavigateBrowserHandler : IInstructionHandler
     {

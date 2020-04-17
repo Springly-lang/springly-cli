@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace TestScriptRunner.Commands
+namespace SpringlyLang.Commands
 {
     public abstract class CommandBase
     {

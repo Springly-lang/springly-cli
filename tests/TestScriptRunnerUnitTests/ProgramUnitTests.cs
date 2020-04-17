@@ -2,12 +2,12 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using TestScript.Common;
-using TestScriptRunner.Cli;
-using TestScriptRunner.Driver;
+using SpringlyLang.Common;
+using SpringlyLang.Cli;
+using SpringlyLang.Driver;
 using Xunit;
 
-namespace TestScriptRunnerUnitTests
+namespace SpringlyLangUnitTests
 {
     public class ProgramUnitTests
     {

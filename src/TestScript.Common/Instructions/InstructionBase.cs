@@ -1,4 +1,4 @@
-﻿namespace TestScript.Common.Instructions
+﻿namespace SpringlyLang.Common.Instructions
 {
     public abstract class InstructionBase
     {

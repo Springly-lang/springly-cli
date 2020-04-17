@@ -1,8 +1,8 @@
 ﻿using Irony.Interpreter.Ast;
-using TestScriptRunner.Language.Ast;
-using TestScriptRunner.Language.Ast.BrowserNodes;
+using SpringlyLang.Language.Ast;
+using SpringlyLang.Language.Ast.BrowserNodes;
 
-namespace TestScriptRunner.Language.Visitors
+namespace SpringlyLang.Language.Visitors
 {
     public interface IScriptVisitor : IAstVisitor
     {

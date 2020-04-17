@@ -1,4 +1,4 @@
-﻿namespace TestScript.Common
+﻿namespace SpringlyLang.Common
 {
     public static class StringExtensions
     {

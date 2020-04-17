@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using TestScript.Common;
+using SpringlyLang.Common;
 
-namespace TestScriptRunner.Driver
+namespace SpringlyLang.Driver
 {
     public interface ITestScriptExecuter
     {

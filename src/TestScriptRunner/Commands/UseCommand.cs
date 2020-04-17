@@ -1,8 +1,8 @@
 ﻿using System;
 using System.IO;
-using TestScriptRunner.UseDefinitions;
+using SpringlyLang.UseDefinitions;
 
-namespace TestScriptRunner.Commands
+namespace SpringlyLang.Commands
 {
     public class UseCommand : CommandBase
     {

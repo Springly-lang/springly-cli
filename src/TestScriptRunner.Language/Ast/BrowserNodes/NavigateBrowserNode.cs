@@ -1,8 +1,8 @@
 ﻿using Irony.Ast;
 using Irony.Parsing;
-using TestScriptRunner.Language.Visitors;
+using SpringlyLang.Language.Visitors;
 
-namespace TestScriptRunner.Language.Ast.BrowserNodes
+namespace SpringlyLang.Language.Ast.BrowserNodes
 {
     public class NavigateBrowserNode : BaseAstNode
     {

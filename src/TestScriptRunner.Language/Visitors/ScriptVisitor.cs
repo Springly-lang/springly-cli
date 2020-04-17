@@ -1,13 +1,13 @@
 ﻿using Irony.Interpreter.Ast;
 using Irony.Parsing;
 using System.IO;
-using TestScript.Common;
-using TestScript.Common.Instructions;
-using TestScriptRunner.Common.UseDefinitions;
-using TestScriptRunner.Language.Ast;
-using TestScriptRunner.Language.Ast.BrowserNodes;
+using SpringlyLang.Common;
+using SpringlyLang.Common.Instructions;
+using SpringlyLang.Common.UseDefinitions;
+using SpringlyLang.Language.Ast;
+using SpringlyLang.Language.Ast.BrowserNodes;
 
-namespace TestScriptRunner.Language.Visitors
+namespace SpringlyLang.Language.Visitors
 {
     public class ScriptVisitor : IScriptVisitor
     {

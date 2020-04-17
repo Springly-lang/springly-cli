@@ -1,10 +1,10 @@
 ﻿using System;
 using System.IO;
 using System.Linq;
-using TestScriptRunner.Commands;
-using TestScriptRunner.UseDefinitions;
+using SpringlyLang.Commands;
+using SpringlyLang.UseDefinitions;
 
-namespace TestScriptRunner
+namespace SpringlyLang
 {
     class Program
     {
