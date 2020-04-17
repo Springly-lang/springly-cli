@@ -20,6 +20,15 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Update="ExpectStatementTests\definitions.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="ExpectStatementTests\expect-test-scenario.springly">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="ExpectStatementTests\index.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Update="MouseClickBrowserTests\right-click-test-scenario.springly">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

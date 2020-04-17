@@ -1,5 +1,6 @@
 ﻿using Irony.Ast;
 using Irony.Parsing;
+using TestScript.Common;
 using TestScriptRunner.Language.Visitors;
 
 namespace TestScriptRunner.Language.Ast.BrowserNodes
@@ -10,7 +11,7 @@ namespace TestScriptRunner.Language.Ast.BrowserNodes
         public override void Init(AstContext context, ParseTreeNode treeNode)
         {
             base.Init(context, treeNode);
-            Identifier = treeNode.ChildNodes[1].Token.Text.Trim('\'', '"');
+            Identifier = treeNode.ChildNodes[1].Token.Text.TrimSurroundings();
         }
 
         public override void AcceptVisitor(IScriptVisitor visitor)
@@ -25,7 +26,7 @@ namespace TestScriptRunner.Language.Ast.BrowserNodes
         public override void Init(AstContext context, ParseTreeNode treeNode)
         {
             base.Init(context, treeNode);
-            Identifier = treeNode.ChildNodes[1].Token.Text.Trim('\'', '"');
+            Identifier = treeNode.ChildNodes[1].Token.Text.TrimSurroundings();
         }
 
         public override void AcceptVisitor(IScriptVisitor visitor)
@@ -40,7 +41,7 @@ namespace TestScriptRunner.Language.Ast.BrowserNodes
         public override void Init(AstContext context, ParseTreeNode treeNode)
         {
             base.Init(context, treeNode);
-            Identifier = treeNode.ChildNodes[1].Token.Text.Trim('\'', '"');
+            Identifier = treeNode.ChildNodes[1].Token.Text.TrimSurroundings();
         }
 
         public override void AcceptVisitor(IScriptVisitor visitor)
