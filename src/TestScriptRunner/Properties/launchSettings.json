@@ -1,8 +1,0 @@
-{
-  "profiles": {
-    "TestScriptRunner": {
-      "commandName": "Project",
-      "commandLineArgs": "C:\\Projects\\TestScriptRunner\\samples\\available-test.test"
-    }
-  }
-}
