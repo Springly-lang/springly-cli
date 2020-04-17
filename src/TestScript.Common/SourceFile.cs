@@ -1,6 +1,6 @@
 ﻿using System.IO;
 
-namespace TestScript.Common
+namespace SpringlyLang.Common
 {
     public class SourceFile
     {

@@ -1,7 +1,7 @@
 ﻿using System.Linq;
-using TestScriptRunner.UseDefinitions;
+using SpringlyLang.UseDefinitions;
 
-namespace TestScriptRunner.Commands
+namespace SpringlyLang.Commands
 {
     public class CommandFactory : ICommandFactory
     {

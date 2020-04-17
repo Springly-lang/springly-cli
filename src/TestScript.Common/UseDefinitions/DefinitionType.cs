@@ -1,4 +1,4 @@
-﻿namespace TestScriptRunner.Common.UseDefinitions
+﻿namespace SpringlyLang.Common.UseDefinitions
 {
     public enum DefinitionType
     {

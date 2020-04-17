@@ -1,8 +1,8 @@
 ﻿using Irony.Parsing;
-using TestScriptRunner.Language.Ast;
-using TestScriptRunner.Language.Ast.BrowserNodes;
+using SpringlyLang.Language.Ast;
+using SpringlyLang.Language.Ast.BrowserNodes;
 
-namespace TestScriptRunner.Language
+namespace SpringlyLang.Language
 {
     public class SpringlyGrammar : Grammar
     {

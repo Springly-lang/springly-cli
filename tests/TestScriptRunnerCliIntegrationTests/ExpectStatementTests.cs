@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using TestScriptRunnerCliIntegrationTests;
+using SpringlyLangCliIntegrationTests;
 using Xunit;
 
-namespace TestScriptRunner.Cli.IntegrationTests
+namespace SpringlyLang.Cli.IntegrationTests
 {
     public class ExpectStatementTests : TestCaseBase
     {

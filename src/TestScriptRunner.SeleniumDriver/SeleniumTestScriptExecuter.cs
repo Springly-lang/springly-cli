@@ -1,11 +1,11 @@
 ﻿using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
-using TestScript.Common;
-using TestScriptRunner.Common.UseDefinitions;
-using TestScriptRunner.Driver;
+using SpringlyLang.Common;
+using SpringlyLang.Common.UseDefinitions;
+using SpringlyLang.Driver;
 
-namespace TestScriptRunner.SeleniumDriver
+namespace SpringlyLang.SeleniumDriver
 {
     public class SeleniumTestScriptExecuter : ITestScriptExecuter
     {

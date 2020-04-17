@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json.Linq;
 
-namespace TestScriptRunner.UseDefinitions
+namespace SpringlyLang.UseDefinitions
 {
     public class TestCaseUseDefinitionFactory : ITestCaseUseDefinitionFactory
     {

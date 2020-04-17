@@ -2,7 +2,7 @@
 using System.Diagnostics;
 using System.Linq;
 
-namespace TestScriptRunner
+namespace SpringlyLang
 {
     [DebuggerDisplay("{Display}")]
     public class Statement

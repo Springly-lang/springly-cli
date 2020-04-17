@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Linq;
-using TestScriptRunner.Utils;
+using SpringlyLang.Utils;
 
-namespace TestScriptRunner
+namespace SpringlyLang
 {
     [DebuggerDisplay("{TokenType}, {Value}, Column={Column}, Line={Line}")]
     public class Token

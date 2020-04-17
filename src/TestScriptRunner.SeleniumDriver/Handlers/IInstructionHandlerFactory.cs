@@ -1,6 +1,6 @@
-﻿using TestScript.Common.Instructions;
+﻿using SpringlyLang.Common.Instructions;
 
-namespace TestScriptRunner.SeleniumDriver
+namespace SpringlyLang.SeleniumDriver
 {
     public interface IInstructionHandlerFactory
     {

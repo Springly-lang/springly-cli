@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace TestScriptRunner.Commands
+namespace SpringlyLang.Commands
 {
     public class CommandPatternAttribute : Attribute
     {

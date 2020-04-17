@@ -1,4 +1,4 @@
-﻿namespace TestScriptRunner.Commands
+﻿namespace SpringlyLang.Commands
 {
     public class NavigationCommand : CommandBase
     {

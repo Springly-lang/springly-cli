@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text.RegularExpressions;
-using TestScriptRunner.Utils;
+using SpringlyLang.Utils;
 
-namespace TestScriptRunner
+namespace SpringlyLang
 {
     public class Lexer : ILexer
     {        

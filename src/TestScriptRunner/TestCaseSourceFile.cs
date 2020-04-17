@@ -1,4 +1,4 @@
-﻿namespace TestScriptRunner
+﻿namespace SpringlyLang
 {
     public class TestCaseSourceFile
     {

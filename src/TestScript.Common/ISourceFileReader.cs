@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.IO;
 
-namespace TestScript.Common
+namespace SpringlyLang.Common
 {
     public interface ISourceFileReader
     {

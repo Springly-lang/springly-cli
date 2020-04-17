@@ -1,9 +1,9 @@
 ﻿using Irony.Ast;
 using Irony.Parsing;
-using TestScript.Common;
-using TestScriptRunner.Language.Visitors;
+using SpringlyLang.Common;
+using SpringlyLang.Language.Visitors;
 
-namespace TestScriptRunner.Language.Ast.BrowserNodes
+namespace SpringlyLang.Language.Ast.BrowserNodes
 {
     public class ClickBrowserNode : BaseAstNode, IHaveIdentifierNode
     {

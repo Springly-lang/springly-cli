@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using TestScriptRunner.Common.UseDefinitions;
+using SpringlyLang.Common.UseDefinitions;
 
-namespace TestScript.Common
+namespace SpringlyLang.Common
 {
     public class TestScriptContext
     {

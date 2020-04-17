@@ -1,10 +1,10 @@
 ﻿using Irony.Ast;
 using Irony.Interpreter.Ast;
 using Irony.Parsing;
-using TestScript.Common;
-using TestScriptRunner.Language.Visitors;
+using SpringlyLang.Common;
+using SpringlyLang.Language.Visitors;
 
-namespace TestScriptRunner.Language.Ast
+namespace SpringlyLang.Language.Ast
 {
     public class ProgramNode : BaseAstNode
     {

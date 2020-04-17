@@ -2,11 +2,11 @@
 using Irony.Parsing;
 using System;
 using System.Linq;
-using TestScript.Common;
-using TestScript.Common.Instructions;
-using TestScriptRunner.Language.Visitors;
+using SpringlyLang.Common;
+using SpringlyLang.Common.Instructions;
+using SpringlyLang.Language.Visitors;
 
-namespace TestScriptRunner.Language.Ast
+namespace SpringlyLang.Language.Ast
 {
     public class ExpectNode : BaseAstNode
     {

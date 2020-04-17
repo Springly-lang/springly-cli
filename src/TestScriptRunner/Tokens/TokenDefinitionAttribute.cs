@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace TestScriptRunner
+namespace SpringlyLang
 {
     public class TokenDefinitionAttribute : Attribute
     {

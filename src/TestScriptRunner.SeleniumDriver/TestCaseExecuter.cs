@@ -1,10 +1,10 @@
 ﻿using OpenQA.Selenium;
 using System;
 using System.Collections.Generic;
-using TestScript.Common;
-using TestScriptRunner.Common.UseDefinitions;
+using SpringlyLang.Common;
+using SpringlyLang.Common.UseDefinitions;
 
-namespace TestScriptRunner.SeleniumDriver
+namespace SpringlyLang.SeleniumDriver
 {
     public class TestCaseExecuter
     {

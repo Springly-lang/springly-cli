@@ -3,9 +3,9 @@ using Irony.Parsing;
 using System;
 using System.Collections.Generic;
 using System.Text;
-using TestScriptRunner.Language.Visitors;
+using SpringlyLang.Language.Visitors;
 
-namespace TestScriptRunner.Language.Ast
+namespace SpringlyLang.Language.Ast
 {
     public class ValueLiteralNode : BaseAstNode
     {

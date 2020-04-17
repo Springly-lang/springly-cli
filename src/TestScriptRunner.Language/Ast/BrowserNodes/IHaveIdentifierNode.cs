@@ -1,4 +1,4 @@
-﻿namespace TestScriptRunner.Language.Ast.BrowserNodes
+﻿namespace SpringlyLang.Language.Ast.BrowserNodes
 {
     public interface IHaveIdentifierNode
     {

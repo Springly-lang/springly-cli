@@ -1,4 +1,4 @@
-﻿namespace TestScriptRunner.UseDefinitions
+﻿namespace SpringlyLang.UseDefinitions
 {
     public class TestCaseDefinition
     {

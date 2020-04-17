@@ -1,6 +1,6 @@
-﻿using TestScriptRunner.UseDefinitions;
+﻿using SpringlyLang.UseDefinitions;
 
-namespace TestScriptRunner.Commands
+namespace SpringlyLang.Commands
 {
     public interface ICommandFactory
     {

@@ -1,7 +1,7 @@
 using System.IO;
 using Xunit;
 
-namespace TestScriptRunnerCliIntegrationTests
+namespace SpringlyLangCliIntegrationTests
 {
     public class OpenNavigateCloseBrowserTests : TestCaseBase
     {

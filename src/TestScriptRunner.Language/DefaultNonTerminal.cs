@@ -1,7 +1,7 @@
 ﻿using Irony.Parsing;
 using System;
 
-namespace TestScriptRunner.Language
+namespace SpringlyLang.Language
 {
     public class DefaultNonTerminal : NonTerminal
     {

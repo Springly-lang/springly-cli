@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using TestScript.Common.Instructions;
+using SpringlyLang.Common.Instructions;
 
-namespace TestScript.Common
+namespace SpringlyLang.Common
 {
     public class TestCase
     {

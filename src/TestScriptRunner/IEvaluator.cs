@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using TestScriptRunner.Commands;
+using SpringlyLang.Commands;
 
-namespace TestScriptRunner
+namespace SpringlyLang
 {
     public interface IEvaluator
     {

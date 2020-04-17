@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using TestScript.Common.Instructions;
-using TestScriptRunner.Common.UseDefinitions;
-using TestScriptRunner.Driver;
+using SpringlyLang.Common.Instructions;
+using SpringlyLang.Common.UseDefinitions;
+using SpringlyLang.Driver;
 
-namespace TestScriptRunner.SeleniumDriver.Handlers
+namespace SpringlyLang.SeleniumDriver.Handlers
 {
     public class ExpectStatementHandler : IInstructionHandler
     {

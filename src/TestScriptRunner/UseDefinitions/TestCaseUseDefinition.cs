@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace TestScriptRunner.UseDefinitions
+namespace SpringlyLang.UseDefinitions
 {
     public class TestCaseUseDefinition
     {

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace TestScriptRunner.Driver
+namespace SpringlyLang.Driver
 {
 #pragma warning disable RCS1194 // Implement exception constructors.
     public class ExpectationNotSatisfiedException : Exception

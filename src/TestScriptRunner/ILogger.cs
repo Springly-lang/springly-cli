@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Runtime.CompilerServices;
 
-namespace TestScriptRunner
+namespace SpringlyLang
 {
     public interface ILogger
     {

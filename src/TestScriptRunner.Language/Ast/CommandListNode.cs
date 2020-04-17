@@ -1,8 +1,8 @@
 ﻿using Irony.Ast;
 using Irony.Parsing;
-using TestScriptRunner.Language.Visitors;
+using SpringlyLang.Language.Visitors;
 
-namespace TestScriptRunner.Language.Ast
+namespace SpringlyLang.Language.Ast
 {
     public class CommandListNode : BaseAstNode
     {
