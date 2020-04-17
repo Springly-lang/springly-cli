@@ -6,7 +6,6 @@ namespace TestScriptRunner.Language
 {
     public class SpringlyGrammar : Grammar
     {
-        //private readonly CommentTerminal Comment = new CommentTerminal(nameof(Comment), "/*", "*/");
         private readonly CommentTerminal LineComment = new CommentTerminal(nameof(LineComment), "#", "\n", "\r\n");
 
         private readonly DefaultNonTerminal Program = new DefaultNonTerminal(nameof(Program), typeof(ProgramNode));
@@ -30,24 +29,21 @@ namespace TestScriptRunner.Language
         private readonly DefaultNonTerminal ExpectNotEqualCommand = new DefaultNonTerminal(nameof(ExpectNotEqualCommand), typeof(ExpectNode));
         private readonly DefaultNonTerminal ExpectGreaterThanCommand = new DefaultNonTerminal(nameof(ExpectGreaterThanCommand), typeof(ExpectNode));
         private readonly DefaultNonTerminal ExpectGreaterThanOrEqualCommand = new DefaultNonTerminal(nameof(ExpectGreaterThanOrEqualCommand), typeof(ExpectNode));
-        private readonly DefaultNonTerminal ExpectSmallerThanCommand = new DefaultNonTerminal(nameof(ExpectSmallerThanCommand), typeof(ExpectNode));
-        private readonly DefaultNonTerminal ExpectSmallerThanOrEqualCommand = new DefaultNonTerminal(nameof(ExpectSmallerThanOrEqualCommand), typeof(ExpectNode));
+        private readonly DefaultNonTerminal ExpectLessThanCommand = new DefaultNonTerminal(nameof(ExpectLessThanCommand), typeof(ExpectNode));
+        private readonly DefaultNonTerminal ExpectLessThanOrEqualCommand = new DefaultNonTerminal(nameof(ExpectLessThanOrEqualCommand), typeof(ExpectNode));
 
         private readonly DefaultIdentifierTerminal Identifier = new DefaultIdentifierTerminal(nameof(Identifier), typeof(IdentifierNode));
         private readonly StringLiteral QoutedIdentifier = new StringLiteral(nameof(QoutedIdentifier), "\"", StringOptions.NoEscapes, typeof(IdentifierNode));
         private readonly StringLiteral StringLiteral = new StringLiteral(nameof(StringLiteral), "'", StringOptions.AllowsAllEscapes, typeof(StringLiteralNode));
-        private readonly NumberLiteral NumericLiteral = TerminalFactory.CreatePythonNumber(nameof(NumericLiteral));
+        private readonly NumberLiteral NumericLiteral = new NumberLiteral(nameof(NumericLiteral), NumberOptions.AllowSign | NumberOptions.AllowStartEndDot, typeof(NumericLiteralNode));
         private readonly NonTerminal ValueLiteral = new NonTerminal(nameof(ValueLiteral), typeof(ValueLiteralNode));
-
 
         public SpringlyGrammar() : base(caseSensitive: false)
         {
             NumericLiteral.AstConfig.DefaultNodeCreator = () => new NumericLiteralNode();
             NumericLiteral.AstConfig.NodeType = typeof(NumericLiteralNode);
 
-            ValueLiteral.AstConfig.DefaultNodeCreator = () => new NumericLiteralNode();
-            ValueLiteral.AstConfig.NodeType = typeof(NumericLiteralNode);
-            ValueLiteral.Rule = NumericLiteral | StringLiteral;
+            ValueLiteral.Rule = StringLiteral | NumericLiteral;
 
             //term will be added to NonGrammarTerminals automatically 
             QoutedIdentifier.SetOutputTerminal(this, Identifier);
@@ -56,72 +52,77 @@ namespace TestScriptRunner.Language
             NonGrammarTerminals.Add(LineComment);
 
 
-            Root = Program;
+            // <OpenBrowserCommand> ::= "open" <StringLiteral> "browser"
+            OpenBrowserCommand.Rule = ToTerm(Keywords.Open) + StringLiteral + ToTerm(Keywords.Browser);
 
-            // <Program> ::= <DefinitionList> <TestCaseList>
-            Program.Rule = DefinitionList + TestCaseList;
+            // <NavigateBrowserCommand> ::= "navigate" "to" <StringLiteral>
+            NavigateBrowserCommand.Rule = ToTerm(Keywords.Navigate) + ToTerm(Keywords.To) + StringLiteral;
 
-            // <DefinitionList> ::= <Definition>*
-            DefinitionList.Rule = MakeStarRule(DefinitionList, null, Definition);
+            // <CloseBrowserCommand> ::= "close" <StringLiteral> "browser"
+            CloseBrowserCommand.Rule = ToTerm(Keywords.Close) + StringLiteral + ToTerm(Keywords.Browser);
 
-            // <Definition> ::= "use" <StringLiteral>
-            Definition.Rule = ToTerm("use") + StringLiteral;
+            // <ClickBrowserCommand> ::= "click on" <Identifier>
+            ClickBrowserCommand.Rule = ToTerm(Keywords.Click) + ToTerm(Keywords.On) + Identifier;
+            DoubleClickBrowserCommand.Rule = ToTerm(Keywords.Double) + ToTerm(Keywords.Click) + ToTerm(Keywords.On) + Identifier;
+            RightClickBrowserCommand.Rule = ToTerm(Keywords.Right) + ToTerm(Keywords.Click) + ToTerm(Keywords.On) + Identifier;
 
-            // <TestCaseList> ::= <TestCase>+
-            TestCaseList.Rule = MakePlusRule(TestCaseList, null, TestCase);
+            // <ExpectEqualCommand> ::= "expect" <Identifier> equal <ValueLiteral>
+            ExpectEqualCommand.Rule = ToTerm(Keywords.Expect) + Identifier + ToTerm(Keywords.Equal) + (ValueLiteral);
 
-            // <TestCase> ::= "test" "case" <StringLiteral> <CommandList>
-            TestCase.Rule = ToTerm("test") + ToTerm("case") + StringLiteral + CommandList;
+            // <ExpectEqualCommand> ::= "expect" <Identifier> not equal <ValueLiteral>
+            ExpectNotEqualCommand.Rule = ToTerm(Keywords.Expect) + Identifier + ToTerm(Keywords.Not) + ToTerm(Keywords.Equal) + (ValueLiteral);
 
-            // <CommandList> ::= <Command>+
-            CommandList.Rule = MakePlusRule(CommandList, null, Command);
+            // <ExpectEqualCommand> ::= "expect" <Identifier> greater than <ValueLiteral>
+            ExpectGreaterThanCommand.Rule = ToTerm(Keywords.Expect) + Identifier + ToTerm(Keywords.Greater) + ToTerm(Keywords.Than) + (ValueLiteral);
+
+            // <ExpectEqualCommand> ::= "expect" <Identifier> greater than or equal <ValueLiteral>
+            ExpectGreaterThanOrEqualCommand.Rule = ToTerm(Keywords.Expect) + Identifier + ToTerm(Keywords.Greater) + ToTerm(Keywords.Than) + ToTerm(Keywords.Or) + ToTerm(Keywords.Equal) + (ValueLiteral);
+
+            // <ExpectEqualCommand> ::= "expect" <Identifier> less than <ValueLiteral>
+            ExpectLessThanCommand.Rule = ToTerm(Keywords.Expect) + Identifier + ToTerm(Keywords.Less) + ToTerm(Keywords.Than) + (ValueLiteral);
+
+            // <ExpectEqualCommand> ::= "expect" <Identifier> less than or equal <ValueLiteral>
+            ExpectLessThanOrEqualCommand.Rule = ToTerm(Keywords.Expect) + Identifier + ToTerm(Keywords.Less) + ToTerm(Keywords.Than) + ToTerm(Keywords.Or) + ToTerm(Keywords.Equal) + (ValueLiteral);
+
 
             // <Command> ::= <OpenBrowserCommand> | <NavigateBrowserCommand> | etc.
             Command.Rule = OpenBrowserCommand |
                            NavigateBrowserCommand |
                            CloseBrowserCommand |
                            ClickBrowserCommand | DoubleClickBrowserCommand | RightClickBrowserCommand |
-                           ExpectNotEqualCommand | ExpectEqualCommand |
-                           ExpectGreaterThanCommand | ExpectGreaterThanOrEqualCommand | ExpectSmallerThanCommand | ExpectSmallerThanOrEqualCommand;
+                           ExpectNotEqualCommand | ExpectEqualCommand | 
+                           ExpectGreaterThanCommand | ExpectGreaterThanOrEqualCommand | 
+                           ExpectLessThanCommand | ExpectLessThanOrEqualCommand;
 
-            // <OpenBrowserCommand> ::= "open" <StringLiteral> "browser"
-            OpenBrowserCommand.Rule = ToTerm("open") + StringLiteral + ToTerm("browser");
+            // <CommandList> ::= <Command>+
+            CommandList.Rule = MakePlusRule(CommandList, null, Command);
 
-            // <NavigateBrowserCommand> ::= "navigate" "to" <StringLiteral>
-            NavigateBrowserCommand.Rule = ToTerm("navigate") + ToTerm("to") + StringLiteral;
 
-            // <CloseBrowserCommand> ::= "close" <StringLiteral> "browser"
-            CloseBrowserCommand.Rule = ToTerm("close") + StringLiteral + ToTerm("browser");
+            // <TestCase> ::= "test" "case" <StringLiteral> <CommandList>
+            TestCase.Rule = ToTerm(Keywords.Test) + ToTerm(Keywords.Case) + StringLiteral + CommandList;
 
-            // <ClickBrowserCommand> ::= "click on" <Identifier>
-            ClickBrowserCommand.Rule = ToTerm("click") + ToTerm("on") + Identifier;
-            DoubleClickBrowserCommand.Rule = ToTerm("double click") + ToTerm("on") + Identifier;
-            RightClickBrowserCommand.Rule = ToTerm("right click") + ToTerm("on") + Identifier;
 
-            ExpectEqualCommand.Rule = ToTerm("expect") + Identifier + ToTerm("equal") + (ValueLiteral);
-            ExpectNotEqualCommand.Rule = ToTerm("expect") + Identifier + ToTerm("not") + ToTerm("equal") + (ValueLiteral);
+            // <TestCaseList> ::= <TestCase>+
+            TestCaseList.Rule = MakePlusRule(TestCaseList, null, TestCase);
 
-            ExpectGreaterThanCommand.Rule = ToTerm("expect") + Identifier + ToTerm("greater") + ToTerm("than") + (ValueLiteral);
-            ExpectGreaterThanOrEqualCommand.Rule = ToTerm("expect") + Identifier + ToTerm("greater") + ToTerm("than") + ToTerm("or") + ToTerm("equal") + (ValueLiteral);
 
-            ExpectSmallerThanCommand.Rule = ToTerm("expect") + Identifier + ToTerm("smaller") + ToTerm("than") + (ValueLiteral);
-            ExpectSmallerThanOrEqualCommand.Rule = ToTerm("expect") + Identifier + ToTerm("smaller") + ToTerm("than") + ToTerm("or") + ToTerm("equal") + (ValueLiteral);
+            // <Definition> ::= "use" <StringLiteral>
+            Definition.Rule = ToTerm(Keywords.Use) + StringLiteral;
+
+
+            // <DefinitionList> ::= <Definition>*
+            DefinitionList.Rule = MakeStarRule(DefinitionList, null, Definition);
+
+
+            // <Program> ::= <DefinitionList> <TestCaseList>
+            Program.Rule = DefinitionList + TestCaseList;
+
+            Root = Program;
 
             // Grammar configurations
-            MarkPunctuation("to", "on");
+            MarkPunctuation(Keywords.To, Keywords.On);
 
             LanguageFlags = LanguageFlags.CreateAst;
         }
-
-
-        //public override void BuildAst(LanguageData language, ParseTree parseTree)
-        //{
-        //    var opHandler = new OperatorHandler(language.Grammar.CaseSensitive);
-        //    Util.Check(!parseTree.HasErrors(), "ParseTree has errors, cannot build AST.");
-        //    var astContext = new InterpreterAstContext(language, opHandler);
-        //    astContext.DefaultNodeType = typeof(NumericLiteralNode);
-        //    var astBuilder = new AstBuilder(astContext);
-        //    astBuilder.BuildAst(parseTree);
-        //}
     }
 }

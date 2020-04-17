@@ -2,7 +2,7 @@
 {
     public class OpenBrowserInstruction : BrowserInstructionBase
     {
-        public OpenBrowserInstruction(string browserName)
+        public OpenBrowserInstruction(string browserName, InstructionSourceLocation location) : base(location)
         {
             BrowserName = browserName;
         }

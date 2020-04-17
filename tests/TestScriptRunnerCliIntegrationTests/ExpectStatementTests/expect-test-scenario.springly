@@ -8,18 +8,18 @@ test case 'Expect Evaluation Scenario'
   navigate to '$INDEX_FILE_PATH$'
   
   # Assert
-  #expect "equal-value-container" equal 'Exactly Expected Value'
-  #expect "equal-value-container" not equal 'Not An Expected Value'
+  expect "equal-value-container" equal 'Exactly Expected Value'
+  expect "equal-value-container" not equal 'Not An Expected Value'
   
   expect "numeric-value-container" equal 42
-  expect "numeric-value-container" not equal 41
+  expect "numeric-value-container" not equal -42.0
   
+  expect "numeric-value-container" greater than 41
   expect "numeric-value-container" greater than or equal 41
   expect "numeric-value-container" greater than or equal 42
-  expect "numeric-value-container" greater than 41
 
-  expect "numeric-value-container" smaller than or equal 42
-  expect "numeric-value-container" smaller than or equal 43
-  expect "numeric-value-container" smaller than 43
+  expect "numeric-value-container" less than 43
+  expect "numeric-value-container" less than or equal 42
+  expect "numeric-value-container" less than or equal 43
 
   close 'chrome' browser

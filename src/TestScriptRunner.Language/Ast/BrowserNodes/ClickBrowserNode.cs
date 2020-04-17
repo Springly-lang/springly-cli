@@ -26,7 +26,7 @@ namespace TestScriptRunner.Language.Ast.BrowserNodes
         public override void Init(AstContext context, ParseTreeNode treeNode)
         {
             base.Init(context, treeNode);
-            Identifier = treeNode.ChildNodes[1].Token.Text.TrimSurroundings();
+            Identifier = treeNode.ChildNodes[2].Token.Text.TrimSurroundings();
         }
 
         public override void AcceptVisitor(IScriptVisitor visitor)
@@ -41,7 +41,7 @@ namespace TestScriptRunner.Language.Ast.BrowserNodes
         public override void Init(AstContext context, ParseTreeNode treeNode)
         {
             base.Init(context, treeNode);
-            Identifier = treeNode.ChildNodes[1].Token.Text.TrimSurroundings();
+            Identifier = treeNode.ChildNodes[2].Token.Text.TrimSurroundings();
         }
 
         public override void AcceptVisitor(IScriptVisitor visitor)

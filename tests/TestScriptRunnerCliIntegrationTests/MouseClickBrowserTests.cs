@@ -6,29 +6,14 @@ namespace TestScriptRunnerCliIntegrationTests
     public class MouseClickBrowserTests : TestCaseBase
     {
         [Theory]
-        [InlineData("single-click-test-scenario.springly", "Single Click")]
-        [InlineData("double-click-test-scenario.springly", "Double Click")]
-        [InlineData("right-click-test-scenario.springly", "Right Click")]
-        public void MouseClick_OnExistingButton_ActsAsExpected(string scriptFileName, string expectedValue)
+        [InlineData("single-click-test-scenario.springly")]
+        [InlineData("double-click-test-scenario.springly")]
+        [InlineData("right-click-test-scenario.springly")]
+        public void MouseClick_OnExistingButton_ActsAsExpected(string scriptFileName)
         {
             // Arrange
             var program = CreateProgramInstance();
-
-            var baseDirectory = Path.Combine(Directory.GetCurrentDirectory(), "MouseClickBrowserTests");
-            var args = new[]
-            {
-                Path.Combine(baseDirectory, scriptFileName)
-            };
-
-            var indexFileName = Path.Combine(baseDirectory, "index.html");
-            indexFileName = "file:///" + indexFileName.Replace(@"\", "/");
-            foreach (var file in args)
-            {
-                var content = File.ReadAllText(file);
-                content = content.Replace("$INDEX_FILE_PATH$", indexFileName);
-                File.WriteAllText(file, content);
-            }
-
+            var args = SetupFiles("MouseClickBrowserTests", scriptFileName);
 
             // Act
             var ex = Record.Exception(() => program.Run(args));

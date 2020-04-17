@@ -20,23 +20,23 @@ namespace TestScriptRunner.Language.Ast
 
             var isNegative = ContainsAny(treeNode.ChildNodes, Keywords.Not);
 
-            if (ContainsAll(treeNode.ChildNodes, Keywords.Greater, Keywords.Equal) || ContainsAll(treeNode.ChildNodes, Keywords.Greater, Keywords.Equals))
+            if (ContainsAll(treeNode.ChildNodes, Keywords.Greater, Keywords.Equal))
                 ComparerOperator = ExpectComparerOperator.GreaterThanOrEqual;
             else if (ContainsAny(treeNode.ChildNodes, Keywords.Greater))
                 ComparerOperator = ExpectComparerOperator.Greater;
-            else if (ContainsAll(treeNode.ChildNodes, Keywords.Smaller, Keywords.Equal) || ContainsAll(treeNode.ChildNodes, Keywords.Smaller, Keywords.Equals))
-                ComparerOperator = ExpectComparerOperator.SmallerThanOrEqual;
-            else if (ContainsAny(treeNode.ChildNodes, Keywords.Smaller))
-                ComparerOperator = ExpectComparerOperator.Smaller;
+            else if (ContainsAll(treeNode.ChildNodes, Keywords.Less, Keywords.Equal))
+                ComparerOperator = ExpectComparerOperator.LessThanOrEqual;
+            else if (ContainsAny(treeNode.ChildNodes, Keywords.Less))
+                ComparerOperator = ExpectComparerOperator.Less;
             else
                 ComparerOperator = isNegative ? ExpectComparerOperator.NotEqual : ExpectComparerOperator.Equal;
 
             var identifier = treeNode.ChildNodes.FirstOrDefault(x => x.AstNode?.GetType() == typeof(IdentifierNode));
             Target = identifier.Token.Text.TrimSurroundings();
 
-            var valueLiteral = treeNode.ChildNodes.FirstOrDefault(x => x.Term.GetType() == typeof(StringLiteral) || x.Term.GetType() == typeof(NumberLiteral));
+            var valueLiteral = treeNode.ChildNodes.Last(x => x.Term.GetType() == typeof(NonTerminal));
 
-            Value = valueLiteral?.Token?.Text?.TrimSurroundings();
+            Value = valueLiteral.ChildNodes[0].Token?.Text?.TrimSurroundings();
         }
 
         private static bool ContainsAny(ParseTreeNodeList nodes, string term)

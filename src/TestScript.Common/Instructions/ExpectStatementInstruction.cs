@@ -2,7 +2,7 @@
 {
     public class ExpectStatementInstruction : InstructionBase
     {
-        public ExpectStatementInstruction(string target, ExpectComparerOperator comparerOperator, string value)
+        public ExpectStatementInstruction(string target, ExpectComparerOperator comparerOperator, string value, InstructionSourceLocation location) : base(location)
         {
             ComparerOperator = comparerOperator;
             Target = target;
@@ -22,7 +22,7 @@
         NotEqual,
         Greater,
         GreaterThanOrEqual,
-        Smaller,
-        SmallerThanOrEqual,
+        Less,
+        LessThanOrEqual,
     }
 }

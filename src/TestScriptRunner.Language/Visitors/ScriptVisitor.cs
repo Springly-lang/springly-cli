@@ -1,4 +1,5 @@
 ﻿using Irony.Interpreter.Ast;
+using Irony.Parsing;
 using System.IO;
 using TestScript.Common;
 using TestScript.Common.Instructions;
@@ -34,17 +35,20 @@ namespace TestScriptRunner.Language.Visitors
 
         public void Visit(ClickBrowserNode node)
         {
-            Context.LastTestCase.Instructions.Add(new ClickBrowserInstruction(ClickType.SingleClick, node.Identifier));
+            var location = GetLocation(node, Context);
+            Context.LastTestCase.Instructions.Add(new ClickBrowserInstruction(ClickType.SingleClick, node.Identifier, 1, location));
         }
 
         public void Visit(DoubleClickBrowserNode node)
         {
-            Context.LastTestCase.Instructions.Add(new ClickBrowserInstruction(ClickType.DoubleClick, node.Identifier));
+            var location = GetLocation(node, Context);
+            Context.LastTestCase.Instructions.Add(new ClickBrowserInstruction(ClickType.DoubleClick, node.Identifier, 1, location));
         }
 
         public void Visit(RightClickBrowserNode node)
         {
-            Context.LastTestCase.Instructions.Add(new ClickBrowserInstruction(ClickType.RightClick, node.Identifier));
+            var location = GetLocation(node, Context);
+            Context.LastTestCase.Instructions.Add(new ClickBrowserInstruction(ClickType.RightClick, node.Identifier, 1, location));
         }
 
 
@@ -63,23 +67,30 @@ namespace TestScriptRunner.Language.Visitors
 
         public void Visit(OpenBrowserNode node)
         {
-            Context.LastTestCase.Instructions.Add(new OpenBrowserInstruction(node.BrowserName));
+            var location = GetLocation(node, Context);
+            Context.LastTestCase.Instructions.Add(new OpenBrowserInstruction(node.BrowserName, location));
         }
 
         public void Visit(NavigateBrowserNode node)
         {
+            var location = GetLocation(node, Context);
             var trimedUrl = node.Url.Trim('\'', '"');
-            Context.LastTestCase.Instructions.Add(new BrowserNavigateInstruction(trimedUrl));
+            Context.LastTestCase.Instructions.Add(new BrowserNavigateInstruction(trimedUrl, location));
         }
 
         public void Visit(CloseBrowserNode node)
         {
-            Context.LastTestCase.Instructions.Add(new CloseBrowserInstruction(null));
+            var location = GetLocation(node, Context);
+            Context.LastTestCase.Instructions.Add(new CloseBrowserInstruction(null, location));
         }
 
         public void Visit(ExpectNode node)
         {
-            Context.LastTestCase.Instructions.Add(new ExpectStatementInstruction(node.Target, node.ComparerOperator, node.Value));
+            var location = GetLocation(node, Context);
+            Context.LastTestCase.Instructions.Add(new ExpectStatementInstruction(node.Target, node.ComparerOperator, node.Value, location));
         }
+
+        private static InstructionSourceLocation GetLocation(AstNode node, TestScriptContext context)
+            => new InstructionSourceLocation(node.Location.Line, node.Location.Column, context.SourceFile.FileName);
     }
 }
