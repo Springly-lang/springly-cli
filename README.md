@@ -1,4 +1,4 @@
-# Springly-cli (Currently under development 🚧)
+# Springly Language (Currently under development 🚧)
 ![.NET Core](https://github.com/Springly-lang/springly-cli/workflows/.NET%20Core/badge.svg)
 
 
