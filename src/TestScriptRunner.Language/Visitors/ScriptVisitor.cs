@@ -76,5 +76,10 @@ namespace TestScriptRunner.Language.Visitors
         {
             Context.LastTestCase.Instructions.Add(new CloseBrowserInstruction(null));
         }
+
+        public void Visit(ExpectNode node)
+        {
+            Context.LastTestCase.Instructions.Add(new ExpectStatementInstruction(node.Target, node.ComparerOperator, node.Value));
+        }
     }
 }

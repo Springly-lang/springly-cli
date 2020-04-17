@@ -20,6 +20,9 @@ namespace TestScriptRunner.SeleniumDriver
             if (instruction is ClickBrowserInstruction clickBrowserInstruction)
                 return new ClickBrowserHandler(clickBrowserInstruction);
 
+            if (instruction is ExpectStatementInstruction expectStatementInstruction)
+                return new ExpectStatementHandler(expectStatementInstruction);
+
             throw new NotSupportedException($"Instruction {instruction} is not supported by this driver.");
         }
     }

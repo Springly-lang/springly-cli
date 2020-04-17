@@ -1,0 +1,8 @@
+﻿{
+  "equal-value-container": {
+    "css-selector": "div#equal-value-container"
+  },
+  "numeric-value-container": {
+    "css-selector": "div#numeric-value-container"
+  }
+}

@@ -33,6 +33,13 @@ namespace TestScriptRunner.SeleniumDriver
             //}
         }
 
+        public void Release(string browserName)
+        {
+            this[browserName].Quit();
+            this[browserName].Dispose();
+            Drivers.Remove(browserName);
+        }
+
         public void DefineDefaultBrowser() => Define(WellKnownDriverNames.DefaultBrowserName);
 
         public bool Exists(string browserName) => Drivers.ContainsKey(browserName);
