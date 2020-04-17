@@ -1,9 +1,8 @@
 ﻿namespace TestScript.Common.Instructions
 {
-
     public class BrowserNavigateInstruction : BrowserInstructionBase
     {
-        public BrowserNavigateInstruction(string url)
+        public BrowserNavigateInstruction(string url, InstructionSourceLocation location) : base(location)
         {
             Url = url;
         }

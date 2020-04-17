@@ -2,7 +2,7 @@
 {
     public class ClickBrowserInstruction : InstructionBase
     {
-        public ClickBrowserInstruction(ClickType clickType, string targetIdentifier, int times = 1)
+        public ClickBrowserInstruction(ClickType clickType, string targetIdentifier, int times, InstructionSourceLocation location) : base(location)
         {
             ClickType = clickType;
             ClickTimes = times;

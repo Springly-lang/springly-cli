@@ -15,11 +15,13 @@ namespace TestScriptRunner.SeleniumDriver.Handlers
             ComparerOperator = expectStatementInstruction.ComparerOperator;
             Target = expectStatementInstruction.Target;
             Value = expectStatementInstruction.Value;
+            SourceLocation = expectStatementInstruction.SourceLocation;
         }
 
         public ExpectComparerOperator ComparerOperator { get; }
         public string Target { get; }
         public string Value { get; }
+        public InstructionSourceLocation SourceLocation { get; }
 
         public void Handle(IEnumerable<TestCaseUseDefinition> definitions, BrowserScope scope)
         {
@@ -42,10 +44,10 @@ namespace TestScriptRunner.SeleniumDriver.Handlers
                 case ExpectComparerOperator.GreaterThanOrEqual:
                     isSatisfied = IsGreaterThanOrEqual(element.Text, Value);
                     break;
-                case ExpectComparerOperator.Smaller:
+                case ExpectComparerOperator.Less:
                     isSatisfied = IsSmallerThan(element.Text, Value);
                     break;
-                case ExpectComparerOperator.SmallerThanOrEqual:
+                case ExpectComparerOperator.LessThanOrEqual:
                     isSatisfied = IsSmallerThanOrEqual(element.Text, Value);
                     break;
                 default:
@@ -53,7 +55,10 @@ namespace TestScriptRunner.SeleniumDriver.Handlers
             }
 
             if (!isSatisfied)
-                throw new ExpectationNotSatisfiedException($"Expectation failed for '{Target}' {GetMessage(ComparerOperator)} '{Value}'.");
+            {
+                var message = $"Expectation failed for '{Target}' {GetMessage(ComparerOperator)} '{Value}' at {SourceLocation.FileName}:{SourceLocation.LineNumber}.";
+                throw new ExpectationNotSatisfiedException(message, SourceLocation.LineNumber, SourceLocation.Column, SourceLocation.FileName);
+            }
         }
 
         private object GetMessage(ExpectComparerOperator comparerOperator)
@@ -68,9 +73,9 @@ namespace TestScriptRunner.SeleniumDriver.Handlers
                     return "greater than ";
                 case ExpectComparerOperator.GreaterThanOrEqual:
                     return "greater than or equal to";
-                case ExpectComparerOperator.Smaller:
+                case ExpectComparerOperator.Less:
                     return "smaller than";
-                case ExpectComparerOperator.SmallerThanOrEqual:
+                case ExpectComparerOperator.LessThanOrEqual:
                     return "smaller than or equal to";
                 default:
                     return string.Empty;
