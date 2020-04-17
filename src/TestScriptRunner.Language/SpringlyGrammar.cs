@@ -37,7 +37,7 @@ namespace TestScriptRunner.Language
         private readonly StringLiteral QoutedIdentifier = new StringLiteral(nameof(QoutedIdentifier), "\"", StringOptions.NoEscapes, typeof(IdentifierNode));
         private readonly StringLiteral StringLiteral = new StringLiteral(nameof(StringLiteral), "'", StringOptions.AllowsAllEscapes, typeof(StringLiteralNode));
         private readonly NumberLiteral NumericLiteral = TerminalFactory.CreatePythonNumber(nameof(NumericLiteral));
-        private readonly Terminal ValueLiteral = new Terminal(nameof(ValueLiteral), TokenCategory.Content, TermFlags.IsLiteral);
+        private readonly NonTerminal ValueLiteral = new NonTerminal(nameof(ValueLiteral), typeof(ValueLiteralNode));
 
 
         public SpringlyGrammar() : base(caseSensitive: false)
@@ -47,7 +47,7 @@ namespace TestScriptRunner.Language
 
             ValueLiteral.AstConfig.DefaultNodeCreator = () => new NumericLiteralNode();
             ValueLiteral.AstConfig.NodeType = typeof(NumericLiteralNode);
-
+            ValueLiteral.Rule = NumericLiteral | StringLiteral;
 
             //term will be added to NonGrammarTerminals automatically 
             QoutedIdentifier.SetOutputTerminal(this, Identifier);
