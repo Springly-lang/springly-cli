@@ -23,8 +23,10 @@ jobs:
       run: dotnet build --configuration Release --no-restore
     - name: Test
       run: dotnet test --no-restore --verbosity normal
-    - name: Publish
-      run: dotnet publish -c Release --self-contained true -r win -o ./binaries
+    - name: Publish Windows
+      run: dotnet publish -c Release --self-contained true -r win10-x64 -o ./binaries
+    - name: Publish Linux
+      run: dotnet publish -c Release --self-contained true -r linux-x64 -o ./binaries
     - name: Create a Release
       uses: actions/create-release@v1
       with:
