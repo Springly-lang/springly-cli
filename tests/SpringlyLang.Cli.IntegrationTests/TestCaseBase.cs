@@ -12,14 +12,14 @@ namespace SpringlyLangCliIntegrationTests
 {
     public abstract class TestCaseBase
     {
-        protected Program CreateProgramInstance()
+        protected Startup CreateInstance()
         {
             var reader = new SourceFileReader();
             var logger = new Mock<ILogger<SeleniumTestScriptExecuter>>().Object;
             var interpreter = new IronyTestScriptInterpreter(new UseDefinitionFactory());
             var executer = new SeleniumTestScriptExecuter(logger, new InstructionHandlerFactory());
 
-            return new Program(reader, interpreter, executer);
+            return new Startup(reader, interpreter, executer);
         }
 
         protected string[] SetupFiles(string assetsFolderName, params string[] scriptFileNames)

@@ -27,7 +27,7 @@ namespace SpringlyLang.SeleniumDriver
 
                 foreach (var testCase in context.TestCases)
                 {
-                    Logger.LogInformation($"Test Case '{testCase.Name}' started...");
+                    Logger.LogInformation($"Test Case {testCase.Name} started...");
                     executer.Execute(testCase, context.Definitions);
                 }
             }

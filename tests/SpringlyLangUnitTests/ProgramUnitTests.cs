@@ -22,10 +22,10 @@ namespace SpringlyLangUnitTests
             var mockedInterpreter = new Mock<ITestScriptInterpreter>();
             var mockedExecuter = new Mock<ITestScriptExecuter>();
 
-            var program = new Program(mockedFileReader.Object, mockedInterpreter.Object, mockedExecuter.Object);
+            var app = new Startup(mockedFileReader.Object, mockedInterpreter.Object, mockedExecuter.Object);
 
             // Act
-            program.Run(files);
+            app.Run(files);
 
             // Assert
             mockedFileReader.Verify(x => x.Transform(files), Times.Once());

@@ -15,14 +15,14 @@ namespace SpringlyLang.SeleniumDriver
 
         public IWebDriver this[string browserName]
         {
-            get => Drivers[browserName];
+            get => Drivers.ContainsKey(browserName) ? Drivers[browserName] : null;
         }
 
         public void Define(string browserName)
         {
             //var allTargets = EnvironmentVariableTarget.Machine | EnvironmentVariableTarget.User | EnvironmentVariableTarget.Process;
             //var chromeDriverPath = Environment.GetEnvironmentVariable("CHROMEWEBDRIVER", allTargets);
-            Drivers.Add(browserName, new ChromeDriver(Directory.GetCurrentDirectory()));
+            Drivers.Add(browserName, new ChromeDriver());
             //if (string.IsNullOrWhiteSpace(chromeDriverPath))
             //{
             //    Drivers.Add(browserName, new ChromeDriver());

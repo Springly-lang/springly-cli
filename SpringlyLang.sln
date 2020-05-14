@@ -37,8 +37,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SpringlyLang.Cli", "src\Spr
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tools", "tools", "{CFB4AF63-C3C5-4CBC-AF1A-BFB91981C924}"
 	ProjectSection(SolutionItems) = preProject
+		cleanup-binaries.sh = cleanup-binaries.sh
+		cleanup-memory.sh = cleanup-memory.sh
 		.github\workflows\dotnetcore.yml = .github\workflows\dotnetcore.yml
-		test-cleanup.sh = test-cleanup.sh
+		publish-binaries.sh = publish-binaries.sh
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SpringlyLang.Common", "src\SpringlyLang.Common\SpringlyLang.Common.csproj", "{6F0FD85F-A3A7-4BBC-9624-09F4177059ED}"

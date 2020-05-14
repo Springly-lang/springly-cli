@@ -5,12 +5,12 @@ namespace SpringlyLang.Common
 {
     public interface ISourceFileReader
     {
-        IEnumerable<SourceFile> Transform(string[] files);
+        IEnumerable<SourceFile> Transform(IEnumerable<string> files);
     }
 
     public class SourceFileReader : ISourceFileReader
     {
-        public IEnumerable<SourceFile> Transform(string[] files)
+        public IEnumerable<SourceFile> Transform(IEnumerable<string> files)
         {
             var sourceFiles = new List<SourceFile>();
 
