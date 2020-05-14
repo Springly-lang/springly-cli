@@ -1,5 +1,5 @@
 # This is were you need to define css or xpath selectors.
-use 'definitions.json'
+#use 'definitions.json'
 
 # This is a test case.
 test case "Google Search"

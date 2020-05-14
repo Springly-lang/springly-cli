@@ -9,7 +9,7 @@ namespace SpringlyLangCliIntegrationTests
         public void ForGivenScriptFile_IncludingOpenNavigateCloseCommands_ActsAsExpected()
         {
             // Arrange
-            var program = CreateProgramInstance();
+            var program = CreateInstance();
 
             var baseDirectory = Path.Combine(Directory.GetCurrentDirectory(), "OpenCloseBrowserTests");
             var args = new[]

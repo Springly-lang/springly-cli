@@ -1,46 +1,42 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using CommandLine;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using System;
 using SpringlyLang.Common;
 using SpringlyLang.Common.UseDefinitions;
 using SpringlyLang.Driver;
 using SpringlyLang.Language;
 using SpringlyLang.SeleniumDriver;
+using System;
+using System.Reflection;
 
 namespace SpringlyLang.Cli
 {
-    public class Program
+    public static class Program
     {
-        public Program(ISourceFileReader fileReader, ITestScriptInterpreter interpreter, ITestScriptExecuter executer)
+        static int Main(string[] args)
         {
-            FileReader = fileReader;
-            Interpreter = interpreter;
-            Executer = executer;
+            Introduce();
+
+            return Parser.Default.ParseArguments<RunOptions>(args)
+                .MapResult(ProcessRunVerb, _ => 1);
         }
 
-        public ISourceFileReader FileReader { get; }
-
-        public ITestScriptInterpreter Interpreter { get; }
-
-        public ITestScriptExecuter Executer { get; }
-
-        public void Run(string[] files)
+        static void Introduce()
         {
-            var sourceFiles = FileReader.Transform(files);
-            var contexts = Interpreter.Interpret(sourceFiles);
-            Executer.Execute(contexts);
+            Console.WriteLine($"Springly Lang (R) Test Engine Version {Assembly.GetExecutingAssembly().GetName().Version}");
+            Console.WriteLine($"Copyright (C) {DateTime.Now.Year} All Rights Reserved.");
+            Console.WriteLine();
         }
 
-        static void Main(string[] args)
+        private static int ProcessRunVerb(RunOptions opts)
         {
             var serviceCollection = new ServiceCollection();
             Configure(serviceCollection);
 
             var serviceProvider = serviceCollection.BuildServiceProvider();
 
-
-            var program = serviceProvider.GetService<Program>();
-            program.Run(args);
+            return serviceProvider.GetService<Startup>()
+                .Run(opts.FileNames);
         }
 
         private static void Configure(ServiceCollection services)
@@ -53,7 +49,7 @@ namespace SpringlyLang.Cli
             services.AddTransient<ITestScriptExecuter, SeleniumTestScriptExecuter>();
             services.AddTransient<IInstructionHandlerFactory, InstructionHandlerFactory>();
 
-            services.AddTransient<Program>();
+            services.AddTransient<Startup>();
         }
     }
 }

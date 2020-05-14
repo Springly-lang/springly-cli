@@ -15,7 +15,7 @@ namespace SpringlyLang.Cli.IntegrationTests
             var scriptFileName = "expect-test-scenario.springly";
             var args = SetupFiles("ExpectStatementTests", scriptFileName);
 
-            var program = CreateProgramInstance();
+            var program = CreateInstance();
 
             // Act
             var ex = Record.Exception(() => program.Run(args));

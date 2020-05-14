@@ -12,7 +12,7 @@ namespace SpringlyLangCliIntegrationTests
         public void MouseClick_OnExistingButton_ActsAsExpected(string scriptFileName)
         {
             // Arrange
-            var program = CreateProgramInstance();
+            var program = CreateInstance();
             var args = SetupFiles("MouseClickBrowserTests", scriptFileName);
 
             // Act
