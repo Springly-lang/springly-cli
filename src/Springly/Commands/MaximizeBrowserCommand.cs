@@ -2,15 +2,13 @@
 
 namespace Springly.Commands
 {
-    public class SwitchBrowserCommand : RegexCommandBase
+    public class MaximizeBrowserCommand : RegexCommandBase
     {
-        protected override string[] Patterns => new[] { $"^(switch\\s+to\\s+{WellKnownPatterns.BrowserName})" };
+        protected override string[] Patterns => new[] { "^(maximize\\s+browser)" };
 
         protected override ExecutionResult InternalExecute(Match match, int patternIndex, ExecutionContext context)
         {
-            var name = match.Groups["name"].Value;
-            context.SwitchTo(name);
-
+            context.Current.Manage().Window.Maximize();
             return ExecutionResult.Success;
         }
     }

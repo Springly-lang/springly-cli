@@ -4,19 +4,24 @@ namespace Springly.Commands
 {
     public abstract class RegexCommandBase : ICommand
     {
-        public abstract string Pattern { get; }
+        protected abstract string[] Patterns { get; }
 
         public ExecutionResult Execute(string statement, ExecutionContext context)
         {
-            var match = Regex.Match(statement, Pattern, RegexOptions.IgnoreCase | RegexOptions.Singleline);
-            if (match.Success)
+            var index = 0;
+            foreach (var pattern in Patterns)
             {
-                return InternalExecute(match, context);
+                var match = Regex.Match(statement, pattern, RegexOptions.IgnoreCase | RegexOptions.Singleline);
+                if (match.Success)
+                {
+                    return InternalExecute(match, index, context);
+                }
+                index++;
             }
 
             return ExecutionResult.Continue;
         }
 
-        protected abstract ExecutionResult InternalExecute(Match match, ExecutionContext context);
+        protected abstract ExecutionResult InternalExecute(Match match, int patternIndex, ExecutionContext context);
     }
 }

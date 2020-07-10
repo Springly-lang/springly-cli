@@ -41,9 +41,6 @@
     <None Update="OpenCloseBrowserTests\open-close-navigate-test-scenario.springly">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="MouseClickBrowserTests\definitions.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
     <None Update="MouseClickBrowserTests\index.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

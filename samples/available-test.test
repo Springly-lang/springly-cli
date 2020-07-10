@@ -1,8 +1,8 @@
 use "definitions.json"
 
-test case "Available Test"
+test case Available Test
 	open browser
-	navigate to "https://alibaba.ir"
+	navigate to https://alibaba.ir
 	
 	maximize browser
 	

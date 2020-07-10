@@ -1,4 +1,4 @@
-﻿use 'definitions.json'
+﻿#use 'definitions.json'
 
 test case Expect Evaluation Scenario
   # Arrange

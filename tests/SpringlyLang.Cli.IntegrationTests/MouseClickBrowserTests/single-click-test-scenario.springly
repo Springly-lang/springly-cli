@@ -1,7 +1,5 @@
-﻿use 'definitions.json'
-
-test case Single Click
+﻿test case Single Click
   open browser
   navigate to $INDEX_FILE_PATH$
-  click on "clickable-button"
+  click on #clickable-button
   close browser
