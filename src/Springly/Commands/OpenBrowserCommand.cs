@@ -4,7 +4,7 @@ namespace Springly.Commands
 {
     public class OpenBrowserCommand : ICommand
     {
-        private const string OpenNamedBrowserPattern = "^(open\\s+(?<browser>(\\w+))\\s+browser\\s+as\\s+(?<name>\\[_\\w*]*w+[_\\w*]))";
+        private readonly string OpenNamedBrowserPattern = $"^(open\\s+{WellKnownPatterns.DriverName}\\s+browser\\s+as\\s+{WellKnownPatterns.BrowserName})";
         private const string OpenBrowserPattern = "^(open\\s+browser)";
 
         public bool CanExecute(string statement)

@@ -4,9 +4,12 @@ namespace Springly.Commands
 {
     public class NavigateBrowserCommand : RegexCommandBase
     {
-        public override string Pattern => @"^(navigate)\s+to\s+(?<url>\w+:\/\/[\w@][\w.:@]+\/?[\w\.?=%&=\-+@/$,]*)";
+        protected override string[] Patterns => new[] {
+            @"^(navigate)\s+to\s+(?<url>\w+:\/\/[\w@][\w.:@]+\/?[\w\.?=%&=\-+@/$,]*)",
+            @"^(navigate)\s+to\s+(?<url>\w+:\/\/\/[\w@][\w.:@]+\/?[\w\.?=%&=\-+/$,]*)"
+        };
 
-        protected override ExecutionResult InternalExecute(Match match, ExecutionContext context)
+        protected override ExecutionResult InternalExecute(Match match, int patternIndex, ExecutionContext context)
         {
             var url = match.Groups["url"].Value;
             context.Current.Navigate().GoToUrl(url);

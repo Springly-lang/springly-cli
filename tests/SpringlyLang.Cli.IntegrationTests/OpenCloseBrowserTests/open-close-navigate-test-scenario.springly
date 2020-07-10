@@ -1,5 +1,19 @@
-﻿test case 'Single Click'
+﻿test case Simple Open Close Browser scenario
   
   open browser
   navigate to $INDEX_FILE_PATH$
   close browser
+
+  open chrome browser as chrome_1
+  navigate to $INDEX_FILE_PATH$
+  maximize browser
+
+
+  open chrome browser as chrome_2
+  navigate to $INDEX_FILE_PATH$
+  maximize browser
+
+  close chrome_1
+  
+  minimize browser
+  close chrome_2

@@ -4,7 +4,7 @@ namespace Springly.Commands
 {
     public class CloseBrowserCommand : ICommand
     {
-        private const string CloseNamedBrowserPattern = "^(close\\s+(?<name>[_\\w*]*\\w+[_\\w*]))";
+        private readonly string CloseNamedBrowserPattern = $"^(close\\s+{WellKnownPatterns.BrowserName})";
         private const string CloseBrowserPattern = "^(close\\s+browser)";
 
         public ExecutionResult Execute(string statement, ExecutionContext context)
