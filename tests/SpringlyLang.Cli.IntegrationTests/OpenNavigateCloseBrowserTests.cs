@@ -1,3 +1,4 @@
+using Springly;
 using System.IO;
 using Xunit;
 
@@ -9,11 +10,10 @@ namespace SpringlyLangCliIntegrationTests
         public void ForGivenScriptFile_IncludingOpenNavigateCloseCommands_ActsAsExpected()
         {
             // Arrange
-            var program = CreateInstance();
             var args = SetupFiles("OpenCloseBrowserTests", "open-close-navigate-test-scenario.springly");
 
             // Act
-            var ex = Record.Exception(() => program.Run(args));
+            var ex = Record.Exception(() => Program.Main(args));
 
             // Assert
             Assert.Null(ex);

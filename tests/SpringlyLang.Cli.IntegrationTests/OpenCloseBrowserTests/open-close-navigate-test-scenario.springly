@@ -1,5 +1,5 @@
 ﻿test case 'Single Click'
   
-  open 'chrome' browser
-  navigate to '$INDEX_FILE_PATH$'
-  close 'chrome' browser
+  open browser
+  navigate to $INDEX_FILE_PATH$
+  close browser

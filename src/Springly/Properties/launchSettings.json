@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "Springly": {
+      "commandName": "Project",
+      "commandLineArgs": "C:\\Projects\\Personal\\SpringlyLang\\samples\\new-basic-sample.test"
+    }
+  }
+}

@@ -16,7 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\SpringlyLang.Cli\SpringlyLang.Cli.csproj" />
+    <ProjectReference Include="..\..\src\Springly\Springly.csproj" />
   </ItemGroup>
 
   <ItemGroup>

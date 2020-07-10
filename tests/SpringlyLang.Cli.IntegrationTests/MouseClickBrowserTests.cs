@@ -1,3 +1,4 @@
+using Springly;
 using System.IO;
 using Xunit;
 
@@ -12,11 +13,10 @@ namespace SpringlyLangCliIntegrationTests
         public void MouseClick_OnExistingButton_ActsAsExpected(string scriptFileName)
         {
             // Arrange
-            var program = CreateInstance();
             var args = SetupFiles("MouseClickBrowserTests", scriptFileName);
 
             // Act
-            var ex = Record.Exception(() => program.Run(args));
+            var ex = Record.Exception(() => Program.Main(args));
 
             // Assert
             Assert.Null(ex);

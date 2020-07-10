@@ -1,27 +1,12 @@
-﻿using Microsoft.Extensions.Logging;
-using Moq;
+﻿using Moq;
+using Springly;
 using System.IO;
 using System.Linq;
-using SpringlyLang.Common;
-using SpringlyLang.Cli;
-using SpringlyLang.Common.UseDefinitions;
-using SpringlyLang.Language;
-using SpringlyLang.SeleniumDriver;
 
 namespace SpringlyLangCliIntegrationTests
 {
     public abstract class TestCaseBase
     {
-        protected Startup CreateInstance()
-        {
-            var reader = new SourceFileReader();
-            var logger = new Mock<ILogger<SeleniumTestScriptExecuter>>().Object;
-            var interpreter = new IronyTestScriptInterpreter(new UseDefinitionFactory());
-            var executer = new SeleniumTestScriptExecuter(logger, new InstructionHandlerFactory());
-
-            return new Startup(reader, interpreter, executer);
-        }
-
         protected string[] SetupFiles(string assetsFolderName, params string[] scriptFileNames)
         {
             var baseDirectory = Path.Combine(Directory.GetCurrentDirectory(), assetsFolderName);
