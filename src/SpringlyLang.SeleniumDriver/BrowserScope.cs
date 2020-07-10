@@ -20,7 +20,13 @@ namespace SpringlyLang.SeleniumDriver
 
         public void Define(string browserName)
         {
-            Drivers.Add(browserName, new ChromeDriver());
+            var chromeOptions = new ChromeOptions();
+            #if RELEASE
+            // Checkout https://github.com/SeleniumHQ/selenium/issues/4961#issuecomment-363094968
+            chromeOptions.AddArgument("--no-sandbox");
+            chromeOptions.AddArgument("--single-process");
+            #endif
+            Drivers.Add(browserName, new ChromeDriver(chromeOptions));
         }
 
         public void Release(string browserName)
