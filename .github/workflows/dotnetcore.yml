@@ -24,11 +24,5 @@ jobs:
       run: dotnet restore
     - name: Build
       run: dotnet build --configuration Release --no-restore
-    - name: Install Xvfb
-      uses: GabrielBB/xvfb-action@v1.2
-      with:
-        run: |
-          Xvfb :99 -ac -screen 0 1024x768x24 &
-          export DISPLAY=:99
     - name: Run tests
       run: dotnet test --no-restore --verbosity normal
