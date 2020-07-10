@@ -25,4 +25,5 @@ jobs:
     - name: Build
       run: dotnet build --configuration Release --no-restore
     - name: Test
+      run: Xvfb sudo Xvfb :10 -ac -screen 0 1024x768x24
       run: dotnet test --no-restore --verbosity normal
