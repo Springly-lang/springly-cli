@@ -20,17 +20,7 @@ namespace SpringlyLang.SeleniumDriver
 
         public void Define(string browserName)
         {
-            //var allTargets = EnvironmentVariableTarget.Machine | EnvironmentVariableTarget.User | EnvironmentVariableTarget.Process;
-            //var chromeDriverPath = Environment.GetEnvironmentVariable("CHROMEWEBDRIVER", allTargets);
             Drivers.Add(browserName, new ChromeDriver());
-            //if (string.IsNullOrWhiteSpace(chromeDriverPath))
-            //{
-            //    Drivers.Add(browserName, new ChromeDriver());
-            //}
-            //else
-            //{
-            //    Drivers.Add(browserName, new ChromeDriver(chromeDriverPath));
-            //}
         }
 
         public void Release(string browserName)
