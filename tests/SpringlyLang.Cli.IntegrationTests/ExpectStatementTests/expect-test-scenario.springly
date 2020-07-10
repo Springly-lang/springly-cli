@@ -1,11 +1,11 @@
 ﻿use 'definitions.json'
 
-test case 'Expect Evaluation Scenario'
+test case Expect Evaluation Scenario
   # Arrange
-  open 'chrome' browser
+  open browser
   
   # Act
-  navigate to '$INDEX_FILE_PATH$'
+  navigate to $INDEX_FILE_PATH$
   
   # Assert
   expect "equal-value-container" equal 'Exactly Expected Value'
@@ -22,4 +22,4 @@ test case 'Expect Evaluation Scenario'
   expect "numeric-value-container" less than or equal 42
   expect "numeric-value-container" less than or equal 43
 
-  close 'chrome' browser
+  close browser

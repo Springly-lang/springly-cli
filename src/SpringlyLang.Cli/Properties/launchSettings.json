@@ -1,9 +1,0 @@
-{
-  "profiles": {
-    "SpringlyLang.Cli": {
-      "commandName": "Project",
-      "commandLineArgs": "--in basic-sample.test",
-      "workingDirectory": "C:\\Projects\\Personal\\SpringlyLang\\src\\SpringlyLang.Cli\\bin\\Debug\\netcoreapp3.1"
-    }
-  }
-}

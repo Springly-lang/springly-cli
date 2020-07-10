@@ -1,7 +1,7 @@
 ﻿use 'definitions.json'
 
-test case 'Double Click'
-  open 'chrome' browser
-  navigate to '$INDEX_FILE_PATH$'
+test case Double Click
+  open browser
+  navigate to $INDEX_FILE_PATH$
   double click on "clickable-button"
-  close 'chrome' browser
+  close browser

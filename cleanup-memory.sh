@@ -1,1 +1,0 @@
-if pgrep chromedriver; then pkill chromedriver; fi

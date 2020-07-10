@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Springly;
 using SpringlyLangCliIntegrationTests;
 using Xunit;
 
@@ -15,10 +16,8 @@ namespace SpringlyLang.Cli.IntegrationTests
             var scriptFileName = "expect-test-scenario.springly";
             var args = SetupFiles("ExpectStatementTests", scriptFileName);
 
-            var program = CreateInstance();
-
             // Act
-            var ex = Record.Exception(() => program.Run(args));
+            var ex = Record.Exception(() => Program.Main(args));
 
             // Assert
             Assert.Null(ex);
