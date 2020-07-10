@@ -1,5 +1,4 @@
 using Springly;
-using System.IO;
 using Xunit;
 
 namespace SpringlyLangCliIntegrationTests
