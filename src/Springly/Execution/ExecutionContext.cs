@@ -78,7 +78,10 @@ namespace Springly
             {
                 case "chrome":
                 default:
-                    return new ChromeDriver();
+                    var options = new ChromeOptions();
+                    options.AddArgument("--headless");
+                    options.AddArgument("--disable-gpu");
+                    return new ChromeDriver(options);
             }
         }
 
