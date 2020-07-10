@@ -43,7 +43,7 @@ namespace Springly
                     {
                         result = command.Execute(trimmedLine, context);
                         if (result.ShouldContinue) continue;
-                        if (!result.IsSuccess) throw new Exception(result.ErrorMessage);
+                        if (!result.IsSuccess) throw new Exception($"{result.ErrorMessage} at '{file}':L{lineNumber}");
                         break;
                     }
 
