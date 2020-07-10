@@ -12,7 +12,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [windows-latest, ubuntu-18.04]
+        os: [ubuntu-18.04]
     
     steps:
     - uses: actions/checkout@v2
@@ -25,5 +25,4 @@ jobs:
     - name: Build
       run: dotnet build --configuration Release --no-restore
     - name: Test
-      run: Xvfb sudo Xvfb :10 -ac -screen 0 1024x768x24
-      run: dotnet test --no-restore --verbosity normal
+      run: Xvfb :10 -ac -screen 0 1024x768x24 && dotnet test --no-restore --verbosity normal
