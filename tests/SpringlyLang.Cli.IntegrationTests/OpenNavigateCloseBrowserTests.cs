@@ -10,22 +10,7 @@ namespace SpringlyLangCliIntegrationTests
         {
             // Arrange
             var program = CreateInstance();
-
-            var baseDirectory = Path.Combine(Directory.GetCurrentDirectory(), "OpenCloseBrowserTests");
-            var args = new[]
-            {
-                Path.Combine(baseDirectory, "open-close-navigate-test-scenario.springly")
-            };
-
-            var indexFileName = Path.Combine(baseDirectory, "index.html");
-            indexFileName = "file:///" + indexFileName.Replace(@"\", "/");
-            foreach (var file in args)
-            {
-                var content = File.ReadAllText(file);
-                content = content.Replace("$INDEX_FILE_PATH$", indexFileName);
-                File.WriteAllText(file, content);
-            }
-
+            var args = SetupFiles("OpenCloseBrowserTests", "open-close-navigate-test-scenario.springly");
 
             // Act
             var ex = Record.Exception(() => program.Run(args));
