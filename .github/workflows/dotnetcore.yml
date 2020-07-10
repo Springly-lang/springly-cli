@@ -24,10 +24,10 @@ jobs:
       run: dotnet restore
     - name: Build
       run: dotnet build --configuration Release --no-restore
-    - name: Prepare Xvfb
-      uses: GabrielBB/xvfb-action@v1.2
     - name: Test
-      run: |
-        Xvfb :99 -ac -screen 0 1024x768x24 &
-        export DISPLAY=:99
-        dotnet test --no-restore --verbosity normal
+      uses: GabrielBB/xvfb-action@v1.2
+      with:
+        run: |
+          Xvfb :99 -ac -screen 0 1024x768x24 &
+          export DISPLAY=:99
+          dotnet test --no-restore --verbosity normal
