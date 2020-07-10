@@ -50,7 +50,7 @@ namespace Springly
                     if (result.ShouldContinue)
                     {
                         // No command matched the input!
-                        throw new SyntaxErrorException($"Invalid line at '{file}':L{lineNumber}.");
+                        throw new SyntaxErrorException($"Invalid line at '{file}':L{lineNumber}.\r\nNo command matched statement '{trimmedLine}'");
                     }
                 }
             }
