@@ -21,9 +21,11 @@ namespace SpringlyLang.SeleniumDriver
         public void Define(string browserName)
         {
             var chromeOptions = new ChromeOptions();
-            #if RELEASE
+            // #if RELEASE
             chromeOptions.AddArgument("--headless");
-            #endif
+            chromeOptions.AddArgument("--no-sandbox");
+            chromeOptions.AddArgument("--disable-gpu");
+            // #endif
             Drivers.Add(browserName, new ChromeDriver(chromeOptions));
         }
 
